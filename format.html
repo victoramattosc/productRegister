@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantidade Total de Produtos</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #quantidadePorDia {
+            max-width: 30%;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h2>Lista de Produtos Concluídos</h2>
+        
+        <ul id="listaProdutos">
+            <!-- Os produtos serão adicionados aqui -->
+        </ul>
+
+        <h1>Quantidade Total de Produtos</h1>
+        <p id="quantidadeAntes"><!-- Quantidade antes do ChatGPT --></p>
+        <p id="quantidadeDepois"><!-- Quantidade depois do ChatGPT --></p>
+        <p id="quantidadeTotal"></p>
+
+    </div>
+
+    <div id="quantidadePorDia">
+        <h2>Quantidade de Produtos por Dia</h2>
+        <ul id="listaQuantidadesPorDia">
+            <!-- As quantidades por dia serão adicionadas aqui -->
+        </ul>
+        <p id="diasAntes"><!-- Dias antes do ChatGPT --></p>
+        <p id="diasDepois"><!-- Dias depois ChatGPT --></p>
+        <p id="diasCadastrando"><!-- Dias cadastrando --></p>
+        <p id="mediaAntes"><!-- Média antes ChatGPT --></p>
+        <p id="mediaDepois"><!-- Média depois ChatGPT --></p> 
+        <p id="aumentoMedia"><!-- Aumento na Média --></p>
+        <p id="aumentoTotal"><!-- Aumento no Total --></p>
+    </div>
+    
+    <script>
+        const produtosComDatas = [
+            { produto: '64269 - Assento Sanitário Almofadado Cinza Plastilit', data: '2024-05-09' },
+            { produto: '42846 - Assento Sanitário Soft Branco Plastili', data: '2024-05-09' },
+            { produto: '64879 - Adesivo Multiuso PU 40 Branco 80g Unipega', data: '2024-05-10' },
+            { produto: '16757 - Lanterna Recarregável Bivolt 12 Led’s Noll', data: '2024-05-10' },
+            { produto: '64728 - Torneira Cozinha Parede Bica Articulada Preta Esteves', data: '2024-05-13' },
+            { produto: '64725 - Torneira Cozinha Mesa Bica Articulada Preta Ducha Esteves', data: '2024-05-13' },
+            { produto: '64754 - Torneira Cozinha Parede Bica Articulada Preta Ducha Esteves', data: '2024-05-13' },
+            { produto: '64860 - Torneira Cozinha Parede Bica Articulada Ducha Esteves', data: '2024-05-13' },
+            { produto: '64862 - Chuveiro Parede Punto Uno Cromado Esteves', data: '2024-05-14' },
+            { produto: '64859 - Torneira Cozinha Parede Bica Móvel Esteves', data: '2024-05-14' },
+            { produto: '64865 - Torneira Banheiro Mesa Bica Alta FitMatic Cromado Esteves', data: '2024-05-15' },
+            { produto: '64864 - Torneira Mesa Bica Média Fit Clinic Cromada Esteves', data: '2024-05-15' },
+            { produto: '64758 - Torneira Parede Curta Fit Clinic Cromada Esteves', data: '2024-05-15' },
+            { produto: '64783 - Prateleira 2030 Fit Cromada Esteves', data: '2024-05-16' },
+            { produto: '64770 - Saboneteira 2010 Fit Cromada Esteves', data: '2024-05-16' },
+            { produto: '64729 - Torneira Cozinha Parede Bica Móvel Clean C62 Cromado Esteves', data: '2024-05-17' },
+            { produto: '64781 - Prateleira 2030 Mônaco C40 Cromada Esteves', data: '2024-05-17' },
+            { produto: '64801 - Torneira Cozinha Mesa Bica Móvel Fit Cromado Esteves', data: '2024-05-18' },
+            { produto: '64730 - Torneira Cozinha Parede Bica Movel Fit Cromado Esteves', data: '2024-05-20' },
+            { produto: '64764 - Torneira Banheiro Mesa Bica Alta Alfa C62 Cromado Esteves', data: '2024-05-20' },
+            { produto: '64861 - Valvula Mictorio EstevesMatic 2570 Cromado Esteves', data: '2024-05-20' },
+            { produto: '64769 - Ducha Higienica Alfa C34 Cromado Esteves', data: '2024-05-20' },
+            { produto: '64768 - Ducha Higienica Stilo C31 Cromado Esteves', data: '2024-05-20' },
+            { produto: '64767 - Ducha Higienica Eco C23 Cromado Esteves', data: '2024-05-22' },
+            { produto: '64782 - Papeleira 2021 Fit Cromada Esteves', data: '2024-05-22' },
+            { produto: '64766 - Torneira Banheiro Mesa Bica Alta 1199 Fit Cromado Esteves', data: '2024-05-22' },
+            { produto: '64765 - Torneira Banheiro Mesa Bica Alta 1198 Fit Cromado Esteves', data: '2024-05-27' },
+            { produto: '64761 - Kit Instalacao Para Bacia Convencional Cromado Esteves', data: '2024-05-27' },
+            { produto: '64785 - Porta Toalha Argola 2050 Fit Cromado Esteves', data: '2024-05-27' },
+            { produto: '64784 - Porta Toalha Barra 2040 Fit Cromado Esteves', data: '2024-05-28' },
+            { produto: '65101 - Torneira Mesa Bica Alta Stilo C31 Cromada Esteves', data: '2024-05-28' },
+            { produto: '64732 - Valvula Pia Cozinha Com Aba Inox Cromado Esteves', data: '2024-05-28' },
+            { produto: '65098 - Torneira Cozinha Mesa Bica Movel Stilo C31 Cromada Esteves', data: '2024-05-29' },
+            { produto: '64273 - Jogo Serra Copo Bimetal 8 Peças 9LR Eda', data: '2024-05-29' },
+            { produto: '64750 - Grelha Inox Quadrada Com Caixilho 150mm Cromado Esteves', data: '2024-05-29' },
+            { produto: '60381 - Silicone Alta Temperatura SI 5920 Cobre 55g Loctite', data: '2024-05-31' },
+            { produto: '64793 - Anel de Vedação Com Guia Para Bacias Sanitarias Esteves', data: '2024-05-31' },
+            { produto: '64788 - Acabamento de Registro Pequeno Fit Cromado Esteves', data: '2024-06-01' },
+            { produto: '64791 - Acabamento de Registro Pequeno Alfa C34 Cromado Esteves', data: '2024-06-01' },
+            { produto: '64746 - Sifao Extensivel Porca Plastica Branco Esteves', data: '2024-06-01' },
+            { produto: '64147 - Jogo de Ferramentas para Reparo de Bicicleta 11 Pcs Robust', data: '2024-06-03' },
+            { produto: '64787 - Cabide Duplo 2060 Fit Cromado Esteves', data: '2024-06-03' },
+            { produto: '64786 - Cabide 2060 Fit Cromado Esteves', data: '2024-06-03' },
+            { produto: '64751 - Grelha Inox Quadrada Sem Caixilho 100mm Cromado Esteves', data: '2024-06-03' },
+            { produto: '64915 - Paquimetro Analogico 6" (150 mm) Kala', data: '2024-06-03' },
+            { produto: '64749 - Grelha Inox Quadrada Com Caixilho 100mm Cromado Esteves', data: '2024-06-03' },
+            { produto: '64149 - Trena 8m Robust', data: '2024-06-04' },
+            { produto: '64150 - Trena 3m Robust', data: '2024-06-04' },
+            { produto: '64866 - Tubo Ligação Flexível 120cm Cromado Esteves', data: '2024-06-04' },
+            { produto: '65076 - Guia Para Serra Copo Com Ventosa Cortag', data: '2024-06-04' },
+            { produto: '65110 - Lixa dAgua 240 Para Acabamento Starret', data: '2024-06-05' },
+            { produto: '65115 - Lixa Ferro 150 Para Acabamento Starret', data: '2024-06-05' },
+            { produto: '65108 - Lixa dAgua 120 Para Semi Acabamento Starret', data: '2024-06-05' },
+            { produto: '65109 - Lixa dAgua 150 Para Semi Acabamento Starret', data: '2024-06-05' },
+            { produto: '65117 - Lixa Ferro 220 Para Acabamento Starret', data: '2024-06-05' },
+            { produto: '65121 - Lixa Massa e Madeira 120 Para Semi Acabamento Starret', data: '2024-06-05' },
+            { produto: '65116 - Lixa Ferro 180 Para Acabamento Starret', data: '2024-06-05' },
+            { produto: '65120 - Lixa Massa e Madeira 100 Para Semi Acabamento Starret', data: '2024-06-06' },
+            { produto: '65112 - Lixa Ferro 80 Starrett Para Semi Acabamento Starrett', data: '2024-06-06' },
+            { produto: '65123 - Lixa Massa e Madeira 220 Para Acabamento Starrett', data: '2024-06-06' },
+            { produto: '65122 - Lixa Massa e Madeira 150 Para Acabamento Starrett', data: '2024-06-06' },
+            { produto: '65111 - Lixa Ferro 60 Para Semi Acabamento Starrett', data: '2024-06-06' },
+            { produto: '65106 - Lixa dÁgua 80 Para Desbaste Starrett', data: '2024-06-06' },
+            { produto: '65114 - Lixa Ferro 120 Para Acabamento Starret', data: '2024-06-06' },
+            { produto: '65113 - Lixa Ferro 100 Para Semi Acabamento Starrett', data: '2024-06-06' },
+            { produto: '64932 - Rebolo Diamantado Para Afiação de Serras 150mm Vonder', data: '2024-06-07' },
+            { produto: '65083 - Disco Diamantado Flexível 50 Azul 100mm Norton', data: '2024-06-07' },
+            { produto: '65084 - Disco Diamantado Flexível 100 Azul Claro 100mm Norton', data: '2024-06-07' },
+            { produto: '65085 - Disco Diamantado Flexivel 200 Laranja 100mm Norton', data: '2024-06-07' },
+        ];
+
+
+// Função para formatar data para dd/mm/aa
+function formatarData(dataISO) {
+    const [ano, mes, dia] = dataISO.split('-');
+    return `${dia}/${mes}/${ano.slice(2)}`;
+}
+
+// Função para calcular a diferença de dias entre duas datas
+function calcularDiferencaDias(dataInicio, dataFim) {
+    const inicio = new Date(dataInicio);
+    const fim = new Date(dataFim);
+    const diferencaMilissegundos = fim - inicio;
+    const diferencaDias = diferencaMilissegundos / (1000 * 60 * 60 * 24);
+    return Math.floor(diferencaDias);
+}
+
+// Função para calcular a média de produtos cadastrados por dia
+function calcularMedia(produtosPorDia, dataReferencia, antes = true) {
+    const datasFiltradas = Object.keys(produtosPorDia).filter(data => {
+        if (antes) {
+            return data < dataReferencia;
+        } else {
+            return data >= dataReferencia;
+        }
+    });
+
+    if (datasFiltradas.length === 0) {
+        return 0;
+    }
+
+    const totalProdutos = datasFiltradas.reduce((total, data) => total + produtosPorDia[data], 0);
+    return totalProdutos / datasFiltradas.length;
+}
+
+// Função para calcular a porcentagem de aumento
+function calcularPorcentagemAumento(valorAntigo, valorNovo) {
+    const diferenca = valorNovo - valorAntigo;
+    return (diferenca / valorAntigo) * 100;
+}
+
+// Função principal para calcular todas as métricas
+function calcularQuantidadeTotal() {
+    const quantidadeTotalElement = document.getElementById("quantidadeTotal");
+    const quantidadeAntesElement = document.getElementById("quantidadeAntes");
+    const quantidadeDepoisElement = document.getElementById("quantidadeDepois");
+    const diasCadastrandoElement = document.getElementById("diasCadastrando");
+    const diasAntesElement = document.getElementById("diasAntes");
+    const diasDepoisElement = document.getElementById("diasDepois");
+    const aumentoTotalElement = document.getElementById("aumentoTotal");
+    const aumentoMediaElement = document.getElementById("aumentoMedia");
+    const listaProdutosElement = document.getElementById("listaProdutos");
+    const listaQuantidadesPorDiaElement = document.getElementById("listaQuantidadesPorDia");
+    const mediaAntesElement = document.getElementById("mediaAntes");
+    const mediaDepoisElement = document.getElementById("mediaDepois");
+
+    const quantidadeTotal = produtosComDatas.length;
+
+    // Exibe a quantidade total
+    quantidadeTotalElement.textContent = `Quantidade Total de Produtos: ${quantidadeTotal}`;
+
+    // Limpa a lista de produtos e a lista de quantidades por dia
+    listaProdutosElement.innerHTML = "";
+    listaQuantidadesPorDiaElement.innerHTML = "";
+
+    // Adiciona cada produto à lista
+    produtosComDatas.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${formatarData(item.data)} - ${item.produto}`;
+        listaProdutosElement.appendChild(li);
+    });
+
+    // Calcula a quantidade de produtos por dia
+    const produtosPorDia = {};
+    produtosComDatas.forEach(item => {
+        if (produtosPorDia[item.data]) {
+            produtosPorDia[item.data]++;
+        } else {
+            produtosPorDia[item.data] = 1;
+        }
+    });
+
+    // Adiciona as quantidades por dia à lista
+    for (const [data, quantidade] of Object.entries(produtosPorDia)) {
+        const li = document.createElement("li");
+        li.textContent = `${formatarData(data)}: ${quantidade} produto(s)`;
+        listaQuantidadesPorDiaElement.appendChild(li);
+    }
+
+    // Calcula e exibe a quantidade de dias desde o primeiro até o mais recente produto cadastrado
+    const datas = Object.keys(produtosPorDia);
+    const dataInicio = datas[0];
+    const dataFim = datas[datas.length - 1];
+    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim);
+    diasCadastrandoElement.textContent = `Dias cadastrando: ${diferencaDias} dia(s)`;
+
+    // Calcula a quantidade de produtos antes e depois do dia 03/06
+    const quantidadeAntes = produtosComDatas.filter(item => item.data < '2024-06-03').length;
+    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03').length;
+    const diasAntes = calcularDiferencaDias(dataInicio, '2024-06-03') - 1;
+    const diasDepois = calcularDiferencaDias('2024-06-03', dataFim) + 1;
+
+    quantidadeAntesElement.textContent = `Quantidade de produtos cadastrados antes do ChatGPT: ${quantidadeAntes} em ${diasAntes} dia(s)`;
+    quantidadeDepoisElement.textContent = `Quantidade de produtos cadastrados depois do ChatGPT: ${quantidadeDepois} em ${diasDepois} dia(s)`;
+
+    // Calcula e exibe a média de produtos cadastrados antes e depois de 03/06
+    const mediaAntes = calcularMedia(produtosPorDia, '2024-06-03', true);
+    const mediaDepois = calcularMedia(produtosPorDia, '2024-06-03', false);
+    mediaAntesElement.textContent = `Média de produtos cadastrados por dia antes do ChatGPT: ${Math.round(mediaAntes)}`;
+    mediaDepoisElement.textContent = `Média de produtos cadastrados por dia depois do ChatGPT: ${Math.round(mediaDepois)}`;
+
+   // Calcula o aumento percentual na média de produtos por dia
+   const aumentoMedia = calcularPorcentagemAumento(mediaAntes, mediaDepois);
+    aumentoMediaElement.textContent = `Aumento percentual na média de produtos por dia: ${aumentoMedia.toFixed(2)}%`;
+
+    // Calcula o aumento percentual no total de produtos cadastrados
+    const totalAntesPorDia = quantidadeAntes / diasAntes;
+    const totalDepoisPorDia = quantidadeDepois / diasDepois;
+    const aumentoTotal = calcularPorcentagemAumento(totalAntesPorDia, totalDepoisPorDia);
+    aumentoTotalElement.textContent = `Aumento percentual no total de produtos cadastrados: ${aumentoTotal.toFixed(2)}%`;
+
+    // Calcula a quantidade de dias antes e depois do dia 03/06
+    diasAntesElement.textContent = `Dias antes do ChatGPT: ${diasAntes} dia(s)`;
+    diasDepoisElement.textContent = `Dias depois do ChatGPT: ${diasDepois} dia(s)`;
+}
+
+        window.onload = calcularQuantidadeTotal;
+    </script>
+
+</body>
+
+</html>
