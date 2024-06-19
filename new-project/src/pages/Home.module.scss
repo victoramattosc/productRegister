@@ -1,0 +1,48 @@
+.main {
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0 auto;
+  background-color: #044d69;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title {
+  border-bottom: 2px solid #bc1b29;
+  padding: 1.3%;
+  color: #fff;
+  font-size: large;
+  text-align: center;
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.group {
+  display: flex;
+  width: 100%;
+}
+
+.anotacoes, .dados {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.anotacoes {
+  overflow-y: auto; /* Adiciona scroll se o conteúdo ultrapassar a altura */
+}
+
+.dados {
+  overflow-y: auto; /* Adiciona scroll se o conteúdo ultrapassar a altura */
+}
