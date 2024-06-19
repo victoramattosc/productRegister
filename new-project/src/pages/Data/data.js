@@ -1,6 +1,6 @@
 export const data = [
     { produto: '64269 - Assento Sanitário Almofadado Cinza Plastilit', data: '2024-05-09' },
-    { produto: '42846 - Assento Sanitário Soft Branco Plastilit', data: '2024-05-09' },
+    { produto: '42846 - Assento Sanitário Soft Branco Plastili', data: '2024-05-09' },
     { produto: '64879 - Adesivo Multiuso PU 40 Branco 80g Unipega', data: '2024-05-10' },
     { produto: '16757 - Lanterna Recarregável Bivolt 12 Led’s Noll', data: '2024-05-10' },
     { produto: '64728 - Torneira Cozinha Parede Bica Articulada Preta Esteves', data: '2024-05-13' },
@@ -105,5 +105,12 @@ export const data = [
     { produto: '64757 - Torneira Banheiro Mesa 1170 EstevesMatic Cromado Esteves', data: '2024-06-18' },
     { produto: '64736 - Válvula Pia Cozinha 3.1/2" Cromado Esteves', data: '2024-06-18' },
     { produto: '64867 - Válvula Pia Banheiro Sem Ladrão 2.3/8" Cromado Esteves', data: '2024-06-18' },
-
+    { produto: '65340 - Jogo de Brocas Para Concreto 5 Peças Tramontina', data: '2024-06-19' },
+    { produto: '65341 - Jogo de Brocas Para Concreto 7 Peças Tramontina', data: '2024-06-19' },
+    { produto: '65336 - Jogo de Brocas Para Aço 10 Peças Tramontina', data: '2024-06-19' },
+    { produto: '65336 - Jogo de Brocas Para Aço Em Polegadas 10 Peças Tramontina', data: '2024-06-19' },
+    { produto: '65337 - Jogo de Brocas Para Aço 15 Peças Tramontina', data: '2024-06-19' },
+    { produto: '65339 - Jogo de Brocas Para Aço Em Polegadas 15 Peças Tramontina', data: '2024-06-19' },
+    { produto: '39375 - Alicate de Pressão Mordente Triangular 10" Tramontina Master', data: '2024-06-19' },
+    { produto: '64742 - Tubo De Saída Corrugado 1.1/2" Com 30cm Cromado Esteves', data: '2024-06-19' },
 ];
