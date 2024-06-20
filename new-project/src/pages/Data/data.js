@@ -113,4 +113,10 @@ export const data = [
     { produto: '65339 - Jogo de Brocas Para Aço Em Polegadas 15 Peças Tramontina', data: '2024-06-19' },
     { produto: '39375 - Alicate de Pressão Mordente Triangular 10" Tramontina Master', data: '2024-06-19' },
     { produto: '64742 - Tubo De Saída Corrugado 1.1/2" Com 30cm Cromado Esteves', data: '2024-06-19' },
+    { produto: '31143 - Alicate Tipo Telefone Bico Reto Isolado 6.1/2" Gedore', data: '2024-06-20' },
+    { produto: '65240 - Alicate Tipo Telefone Bico Reto Isolado 6.1/2" Gedore Red', data: '2024-06-20' },
+    { produto: '64777 - Torneira De Bóia 3/4" Com Balão Branco Esteves', data: '2024-06-20' },
+    { produto: '62262 - Tubo Ligação Flexível Trançado Inox 60cm Esteves', data: '2024-06-20' },
+    { produto: '64800 - Tubo Ligação Flexível PVC 30cm Branco Esteves', data: '2024-06-20' },
+    { produto: '65295 - Silicone Alta Performance Cinza TB1215J 85g ThreeBond', data: '2024-06-20' },
 ];
