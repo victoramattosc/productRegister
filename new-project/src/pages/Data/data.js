@@ -119,4 +119,11 @@ export const data = [
     { produto: '62262 - Tubo Ligação Flexível Trançado Inox 60cm Esteves', data: '2024-06-20' },
     { produto: '64800 - Tubo Ligação Flexível PVC 30cm Branco Esteves', data: '2024-06-20' },
     { produto: '65295 - Silicone Alta Performance Cinza TB1215J 85g ThreeBond', data: '2024-06-20' },
+    { produto: '64137 - Refletor LED Slim 150W Bivolt Luz Branca Avant', data: '2024-06-21' },
+    { produto: '64743 - Tubo Ligação Flexível PVC 40cm Branco Esteves', data: '2024-06-21' },
+    { produto: '64789 - Acabamento Registro Pequeno Eco C23 Cromado Esteves', data: '2024-06-21' },
+    { produto: '64774 - Parafusos Fixação Bacia e Lavatório 1/4”x100mm Cromado Esteves', data: '2024-06-21' },
+    { produto: '64775 - Parafusos Fixação Tanque 1/4"x100mm Aço 1020 Cromado Esteves', data: '2024-06-21' },
+    { produto: '64799 - Refil Filtro de Água Blindado Esteves', data: '2024-06-21' },
+    { produto: '64863 - Kit de Fixação Lateral Para Bacia Cromado Esteves', data: '2024-06-21' },
 ];
