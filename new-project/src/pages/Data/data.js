@@ -129,4 +129,7 @@ export const data = [
     { produto: '65260 - Jogo de Chaves de Fenda 7 Peças Tramontina', data: '2024-06-22' },
     { produto: '65261 - Kit de Ferramentas 7 peças Tramontina', data: '2024-06-22' },
     { produto: '64794 - Bolsa Bacia PVC Preta 4" Esteves', data: '2024-06-22' },
+    { produto: '61094 - Caixa Sanfonada Para Ferramentas 5 Gavetas Tramontina Master', data: '2024-06-24' },
+    { produto: '61096 - Caixa Sanfonada Para Ferramentas 7 Gavetas Tramontina Master', data: '2024-06-24' },
+    { produto: '61095 - Caixa Sanfonada Para Ferramentas 3 Gavetas Tramontina Master', data: '2024-06-24' },
 ];
