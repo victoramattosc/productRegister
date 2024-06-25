@@ -132,4 +132,11 @@ export const data = [
     { produto: '61094 - Caixa Sanfonada Para Ferramentas 5 Gavetas Tramontina Master', data: '2024-06-24' },
     { produto: '61096 - Caixa Sanfonada Para Ferramentas 7 Gavetas Tramontina Master', data: '2024-06-24' },
     { produto: '61095 - Caixa Sanfonada Para Ferramentas 3 Gavetas Tramontina Master', data: '2024-06-24' },
+    { produto: '65378 - Chave Grifo 14" Gedore', data: '2024-06-25' },
+    { produto: '65233 - Soquete Estriado 1/2" x 13mm Gedore Red', data: '2024-06-25' },
+    { produto: '65234 - Soquete Estriado 1/2" x 19mm Gedore Red', data: '2024-06-25' },
+    { produto: '65349 - Soquete Sextavado 1/2" x 13mm Gedore Red', data: '2024-06-25' },
+    { produto: '63640 - Soquete Sextavado 1/2" x 14mm Gedore Red', data: '2024-06-25' },
+    { produto: '65244 - Soquete Torx 1/2" x E11 Gedore Red', data: '2024-06-25' },
+    { produto: '65379 - Soquete Torx 1/2" x E18 Gedore Red', data: '2024-06-25' },
 ];
