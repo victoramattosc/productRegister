@@ -139,4 +139,8 @@ export const data = [
     { produto: '63640 - Soquete Sextavado 1/2" x 14mm Gedore Red', data: '2024-06-25' },
     { produto: '65244 - Soquete Torx 1/2" x E11 Gedore Red', data: '2024-06-25' },
     { produto: '65379 - Soquete Torx 1/2" x E18 Gedore Red', data: '2024-06-25' },
+    { produto: '65329 - Soquete Torx 1/2" x E12 Gedore Red', data: '2024-06-26' },
+    { produto: '34975 - Soquete Estriado 1/2" - D19 Gedore', data: '2024-06-26' },
+    { produto: '65239 - Saca Pino Paralelo 5mm Gedore', data: '2024-06-26' },
+    { produto: '37251 - Soquete Sextavado Longo de Impacto 1/2" x 9/16" Gedore', data: '2024-06-26' },
 ];
