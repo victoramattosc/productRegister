@@ -143,4 +143,9 @@ export const data = [
     { produto: '34975 - Soquete Estriado 1/2" - D19 Gedore', data: '2024-06-26' },
     { produto: '65239 - Saca Pino Paralelo 5mm Gedore', data: '2024-06-26' },
     { produto: '37251 - Soquete Sextavado Longo de Impacto 1/2" x 9/16" Gedore', data: '2024-06-26' },
+    { produto: '65236 - Soquete Estriado Longo 1/2" x 13mm Gedore Red', data: '2024-06-27' },
+    { produto: '65235 - Soquete Estriado Longo 1/2" x 10mm Gedore Red', data: '2024-06-27' },
+    { produto: '65237 - Soquete Estriado Longo 1/2" x 17mm Gedore Red', data: '2024-06-27' },
+    { produto: '65238 - Soquete Estriado Longo 1/2" x 21mm Gedore Red', data: '2024-06-27' },
+    { produto: '65243 - Soquete Multidentado Longo 1/2" x M8 Gedore Red', data: '2024-06-27' },
 ];
