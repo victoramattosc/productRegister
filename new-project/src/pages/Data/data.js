@@ -148,4 +148,10 @@ export const data = [
     { produto: '65237 - Soquete Estriado Longo 1/2" x 17mm Gedore Red', data: '2024-06-27' },
     { produto: '65238 - Soquete Estriado Longo 1/2" x 21mm Gedore Red', data: '2024-06-27' },
     { produto: '65243 - Soquete Multidentado Longo 1/2" x M8 Gedore Red', data: '2024-06-27' },
+    { produto: '65242 - Soquete Multidentado Longo 1/2" x M10 Gedore Red', data: '2024-06-28' },
+    { produto: '65241 - Soquete Multidentado Longo 1/2" x M12 Gedore Red', data: '2024-06-28' },
+    { produto: '65255 - Caixa Plástica Para Ferramentas 13" Tramontina Master', data: '2024-06-28' },
+    { produto: '65256 - Caixa Plástica Para Ferramentas 17" Tramontina Master', data: '2024-06-28' },
+    { produto: '65257 - Caixa Plástica Para Ferramentas 20" Tramontina Master', data: '2024-06-28' },
+    { produto: '65258 - Maleta Plástica Organizadora 17" Tramontina Master', data: '2024-06-28' },
 ];
