@@ -157,4 +157,9 @@ export const data = [
     { produto: '65416 - Mini Balança Digital BM-A04 500g B-Max', data: '2024-06-29' },
     { produto: '65262 - Maleta Plástica com Brocas e Ponteiras 110 pecas Tramontina', data: '2024-06-29' },
     { produto: '65377 - Aspirador Pneumático APV 90 Vonder', data: '2024-06-29' },
+    { produto: '65334 - Broca Para Concreto Longa 6x250mm Tramontina Master', data: '2024-07-01' },
+    { produto: '65335 - Broca Para Concreto Longa 8x250mm Tramontina Master', data: '2024-07-01' },
+    { produto: '64135 - Filtro de Linha Bivolt 8 Tomadas Paralelas 1M CTC Transcolor', data: '2024-07-01' },
+    { produto: '64134 - Filtro de Linha Bivolt 5 Tomadas 1M CTC Transcolor', data: '2024-07-01' },
+    { produto: '64277 - Jogo de Extensão Para Soquete 3/8" 4 Peças Eda', data: '2024-07-01' },
 ];
