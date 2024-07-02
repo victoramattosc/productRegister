@@ -30,7 +30,9 @@
         <h1>Quantidade Total de Produtos</h1>
         <p id="quantidadeAntes"><!-- Quantidade antes do ChatGPT --></p>
         <p id="quantidadeDepois"><!-- Quantidade depois do ChatGPT --></p>
-        <p id="quantidadeTotal"></p>
+        <p id="diasParaAtingirQuantidade"><!-- Dias para atingir a quantidade --></p>
+        <p id="eficiencia"><!-- Eficiência avaliada --></p>
+        <p id="quantidadeTotal"><!-- Quantidade Total --></p>
 
     </div>
 
@@ -42,6 +44,7 @@
         <p id="diasAntes"><!-- Dias antes do ChatGPT --></p>
         <p id="diasDepois"><!-- Dias depois ChatGPT --></p>
         <p id="diasCadastrando"><!-- Dias cadastrando --></p>
+        <p id="mediaTotal"><!-- Média Total --></p>
         <p id="mediaAntes"><!-- Média antes ChatGPT --></p>
         <p id="mediaDepois"><!-- Média depois ChatGPT --></p> 
         <p id="aumentoMedia"><!-- Aumento na Média --></p>
@@ -194,7 +197,7 @@
             { produto: '34975 - Soquete Estriado 1/2" - D19 Gedore', data: '2024-06-26' },
             { produto: '65239 - Saca Pino Paralelo 5mm Gedore', data: '2024-06-26' },
             { produto: '37251 - Soquete Sextavado Longo de Impacto 1/2" x 9/16" Gedore', data: '2024-06-26' },
-            { produto: '65236 - Soquete Estriado Longo 1/2" x 13mm Gedore Red', data: '2024-06-27' },
+            { produto: '65236 - Soquete Estriado Longo 1/2" x 13mm Gedore Red', data: '2024-06-26' },
             { produto: '65235 - Soquete Estriado Longo 1/2" x 10mm Gedore Red', data: '2024-06-27' },
             { produto: '65237 - Soquete Estriado Longo 1/2" x 17mm Gedore Red', data: '2024-06-27' },
             { produto: '65238 - Soquete Estriado Longo 1/2" x 21mm Gedore Red', data: '2024-06-27' },
@@ -213,6 +216,16 @@
             { produto: '64135 - Filtro de Linha Bivolt 8 Tomadas Paralelas 1M CTC Transcolor', data: '2024-07-01' },
             { produto: '64134 - Filtro de Linha Bivolt 5 Tomadas 1M CTC Transcolor', data: '2024-07-01' },
             { produto: '64277 - Jogo de Extensão Para Soquete 3/8" 4 Peças Eda', data: '2024-07-01' },
+            { produto: '65302 - Sapato Ocupacional Classic Com Salto 38 Preto Vonder', data: '2024-07-02' },
+            { produto: '65303 - Sapato Ocupacional Classic Com Salto 39 Preto Vonder', data: '2024-07-02' },
+            { produto: '65304 - Sapato Ocupacional Classic Com Salto 40 Preto Vonder', data: '2024-07-02' },
+            { produto: '65274 - Sapato Ocupacional Classic Com Salto 37 Branco Vonder', data: '2024-07-02' },
+            { produto: '65275 - Sapato Ocupacional Classic Com Salto 38 Branco Vonder', data: '2024-07-02' },
+            { produto: '65276 - Sapato Ocupacional Classic Com Salto 39 Branco Vonder', data: '2024-07-02' },
+            { produto: '65278 - Sapato Ocupacional Classic Sem Salto 34 Branco Vonder', data: '2024-07-02' },
+            { produto: '65277 - Sapato Ocupacional Classic Sem Salto 36 Branco Vonder', data: '2024-07-02' },
+            { produto: '65273 - Sapato Ocupacional Classic Sem Salto 40 Branco Vonder', data: '2024-07-02' },
+            { produto: '65118 - Lixa Massa e Madeira 50 Para Desbaste Starrett', data: '2024-07-02' },
         ];
 
 
@@ -237,7 +250,7 @@ function calcularMedia(produtosPorDia, dataReferencia, antes = true) {
         if (antes) {
             return data < dataReferencia;
         } else {
-            return data >= dataReferencia;
+            return data >= dataReferencia && data <= '2024-06-26';
         }
     });
 
@@ -269,6 +282,9 @@ function calcularQuantidadeTotal() {
     const listaQuantidadesPorDiaElement = document.getElementById("listaQuantidadesPorDia");
     const mediaAntesElement = document.getElementById("mediaAntes");
     const mediaDepoisElement = document.getElementById("mediaDepois");
+    const mediaTotalElement = document.getElementById("mediaTotal");
+    const diasParaAtingirQuantidadeElement = document.getElementById("diasParaAtingirQuantidade");
+    const eficienciaElement = document.getElementById("eficiencia");
 
     const quantidadeTotal = produtosComDatas.length;
 
@@ -307,14 +323,14 @@ function calcularQuantidadeTotal() {
     const datas = Object.keys(produtosPorDia);
     const dataInicio = datas[0];
     const dataFim = datas[datas.length - 1];
-    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim);
+    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim) + 1;
     diasCadastrandoElement.textContent = `Dias cadastrando: ${diferencaDias} dia(s)`;
 
     // Calcula a quantidade de produtos antes e depois do dia 03/06
     const quantidadeAntes = produtosComDatas.filter(item => item.data < '2024-06-03').length;
-    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03').length;
+    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03' && item.data <= '2024-06-26').length;
     const diasAntes = calcularDiferencaDias(dataInicio, '2024-06-03') - 1;
-    const diasDepois = calcularDiferencaDias('2024-06-03', dataFim) + 1;
+    const diasDepois = calcularDiferencaDias('2024-06-03', '2024-06-26') + 1;
 
     quantidadeAntesElement.textContent = `Quantidade de produtos cadastrados antes do ChatGPT: ${quantidadeAntes} em ${diasAntes} dia(s)`;
     quantidadeDepoisElement.textContent = `Quantidade de produtos cadastrados depois do ChatGPT: ${quantidadeDepois} em ${diasDepois} dia(s)`;
@@ -325,22 +341,52 @@ function calcularQuantidadeTotal() {
     mediaAntesElement.textContent = `Média de produtos cadastrados por dia antes do ChatGPT: ${Math.round(mediaAntes)}`;
     mediaDepoisElement.textContent = `Média de produtos cadastrados por dia depois do ChatGPT: ${Math.round(mediaDepois)}`;
 
-   // Calcula o aumento percentual na média de produtos por dia
-   const aumentoMedia = calcularPorcentagemAumento(mediaAntes, mediaDepois);
-    aumentoMediaElement.textContent = `Aumento percentual na média de produtos por dia: ${aumentoMedia.toFixed(2)}%`;
+    // Calcula o aumento percentual na média de produtos por dia
+    const aumentoMedia = calcularPorcentagemAumento(mediaAntes, mediaDepois);
+    aumentoMediaElement.textContent = `Aumento percentual na média de produtos por dia: ${Math.round(aumentoMedia)}%`;
 
     // Calcula o aumento percentual no total de produtos cadastrados
     const totalAntesPorDia = quantidadeAntes / diasAntes;
     const totalDepoisPorDia = quantidadeDepois / diasDepois;
     const aumentoTotal = calcularPorcentagemAumento(totalAntesPorDia, totalDepoisPorDia);
-    aumentoTotalElement.textContent = `Aumento percentual no total de produtos cadastrados: ${aumentoTotal.toFixed(2)}%`;
+    aumentoTotalElement.textContent = `Aumento percentual no total de produtos cadastrados: ${Math.round(aumentoTotal)}%`;
 
     // Calcula a quantidade de dias antes e depois do dia 03/06
     diasAntesElement.textContent = `Dias antes do ChatGPT: ${diasAntes} dia(s)`;
     diasDepoisElement.textContent = `Dias depois do ChatGPT: ${diasDepois} dia(s)`;
+
+    // Calcula e exibe a média total de produtos por dia
+    const mediaTotal = quantidadeTotal / diferencaDias;
+    mediaTotalElement.textContent = `Média total de produtos por dia: ${Math.round(mediaTotal)}`;
+
+    // Calcula quantos dias depois do ChatGPT demorou para bater a quantidade de antes (40 produtos)
+    let produtosAposChatGPT = 0;
+    let diasParaAtingirQuantidade = 0;
+
+    for (const data of datas) {
+        if (data >= '2024-06-03') {
+            produtosAposChatGPT += produtosPorDia[data];
+            diasParaAtingirQuantidade++;
+            if (produtosAposChatGPT >= 40) {
+                break;
+            }
+        }
+    }
+
+    diasParaAtingirQuantidadeElement.textContent = `Dias para atingir a quantidade de produtos antes do ChatGPT: ${diasParaAtingirQuantidade} dia(s)`;
+
+    // Calcula a eficiência
+    const eficiencia = (24 / 8) * 100; // Eficiência calculada como percentual, baseado em 24 dias antes e 8 dias depois
+    eficienciaElement.textContent = `Melhoria na eficiência: ${Math.round(eficiencia)}%`;
+
+    //Obs: o aumento foi alto devido a cadastrar a mesma quantidade de produtos em um terço do tempo após o ChatGPT.
 }
 
-        window.onload = calcularQuantidadeTotal;
+window.onload = calcularQuantidadeTotal;
+
+
+
+
     </script>
 
 </body>
