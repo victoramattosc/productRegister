@@ -22,7 +22,7 @@
 
     <div>
         <h2>Lista de Produtos Concluídos</h2>
-        
+
         <ul id="listaProdutos">
             <!-- Os produtos serão adicionados aqui -->
         </ul>
@@ -37,20 +37,27 @@
     </div>
 
     <div id="quantidadePorDia">
+
+        
         <h2>Quantidade de Produtos por Dia</h2>
         <ul id="listaQuantidadesPorDia">
             <!-- As quantidades por dia serão adicionadas aqui -->
         </ul>
+        <h2>Quantidade de Produtos por Mês</h2>
+        <ul id="listaProdutosPorMes">
+            <!-- As quantidades por mês serão adicionadas aqui -->
+        </ul>
+        <p id="mediaMensal"></p>
         <p id="diasAntes"><!-- Dias antes do ChatGPT --></p>
         <p id="diasDepois"><!-- Dias depois ChatGPT --></p>
         <p id="diasCadastrando"><!-- Dias cadastrando --></p>
         <p id="mediaTotal"><!-- Média Total --></p>
         <p id="mediaAntes"><!-- Média antes ChatGPT --></p>
-        <p id="mediaDepois"><!-- Média depois ChatGPT --></p> 
+        <p id="mediaDepois"><!-- Média depois ChatGPT --></p>
         <p id="aumentoMedia"><!-- Aumento na Média --></p>
         <p id="aumentoTotal"><!-- Aumento no Total --></p>
     </div>
-    
+
     <script>
         const produtosComDatas = [
             { produto: '64269 - Assento Sanitário Almofadado Cinza Plastilit', data: '2024-05-09' },
@@ -147,8 +154,8 @@
             { produto: 'KIT-65114-25UN - Kit 25 Unid. Lixa Ferro 120 Para Acabamento Starrett', data: '2024-06-13' },
             { produto: 'KIT-65113-25UN - Kit 25 Unid. Lixa Ferro 100 Para Semi Acabamento Starrett', data: '2024-06-13' },
             { produto: 'KIT-65121-25UN - Kit 25 Unid. Lixa Massa Madeira 120 Semi Acabamento Starrett', data: '2024-06-13' },
-            { produto: 'KIT-65120-25UN - Kit 25 Unid. Lixa Massa Madeira 100 Semi Acabamento Starrett', data: '2024-06-13' },            
-            { produto: 'KIT-65123-25UN - Kit 25 Unid. Lixa Massa e Madeira 220 Starrett Acabamento', data: '2024-06-13' },            
+            { produto: 'KIT-65120-25UN - Kit 25 Unid. Lixa Massa Madeira 100 Semi Acabamento Starrett', data: '2024-06-13' },
+            { produto: 'KIT-65123-25UN - Kit 25 Unid. Lixa Massa e Madeira 220 Starrett Acabamento', data: '2024-06-13' },
             { produto: 'KIT-65122-25UN - Kit 25 Unid. Lixa Massa Madeira 150 Acabamento Starrett', data: '2024-06-13' },
             { produto: 'KIT-65119-25UN - Kit 25 Unid. Lixa Massa Madeira 80 Desbaste Starrett', data: '2024-06-13' },
             { produto: '65078 - Suporte Manual para Lixa Cortag', data: '2024-06-14' },
@@ -226,6 +233,10 @@
             { produto: '65277 - Sapato Ocupacional Classic Sem Salto 36 Branco Vonder', data: '2024-07-02' },
             { produto: '65273 - Sapato Ocupacional Classic Sem Salto 40 Branco Vonder', data: '2024-07-02' },
             { produto: '65118 - Lixa Massa e Madeira 50 Para Desbaste Starrett', data: '2024-07-02' },
+            { produto: 'KIT-65118-25UN - Kit 25 Unid. Lixa Massa e Madeira 50 Para Desbaste Starrett', data: '2024-07-03' },
+            { produto: '65074 - Porca Niveladora Easy Spin Pacote 50 Unidades Cortag', data: '2024-07-03' },
+            { produto: '65071 - Espaçador Nivelador Easy Spin 1,0mm Pacote 50 Unid. Cortag', data: '2024-07-03' },
+            { produto: '65072 - Espaçador Nivelador Easy Spin 1,5mm Pacote 50 Unid. Cortag', data: '2024-07-03' },
         ];
 
 
@@ -268,6 +279,42 @@ function calcularPorcentagemAumento(valorAntigo, valorNovo) {
     return (diferenca / valorAntigo) * 100;
 }
 
+// Função para obter o nome do mês a partir de uma data ISO
+function obterNomeMes(dataISO) {
+    const [ano, mes] = dataISO.split('-');
+    const meses = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    return `${meses[parseInt(mes) - 1]} de ${ano}`;
+}
+
+// Função para calcular a quantidade de produtos por mês
+function calcularProdutosPorMes(produtosComDatas) {
+    const produtosPorMes = {};
+
+    produtosComDatas.forEach(item => {
+        const [ano, mes] = item.data.split('-');
+        const chaveMes = `${ano}-${mes}`;
+
+        if (produtosPorMes[chaveMes]) {
+            produtosPorMes[chaveMes]++;
+        } else {
+            produtosPorMes[chaveMes] = 1;
+        }
+    });
+
+    return produtosPorMes;
+}
+
+// Função para calcular a média de produtos cadastrados por mês
+function calcularMediaProdutosPorMes(produtosPorMes) {
+    const totalMeses = Object.keys(produtosPorMes).length;
+    const totalProdutos = Object.values(produtosPorMes).reduce((total, quantidade) => total + quantidade, 0);
+
+    return totalProdutos / totalMeses;
+}
+
 // Função principal para calcular todas as métricas
 function calcularQuantidadeTotal() {
     const quantidadeTotalElement = document.getElementById("quantidadeTotal");
@@ -285,6 +332,8 @@ function calcularQuantidadeTotal() {
     const mediaTotalElement = document.getElementById("mediaTotal");
     const diasParaAtingirQuantidadeElement = document.getElementById("diasParaAtingirQuantidade");
     const eficienciaElement = document.getElementById("eficiencia");
+    const listaProdutosPorMesElement = document.getElementById("listaProdutosPorMes");
+    const mediaMensalElement = document.getElementById("mediaMensal");
 
     const quantidadeTotal = produtosComDatas.length;
 
@@ -379,13 +428,23 @@ function calcularQuantidadeTotal() {
     const eficiencia = (24 / 8) * 100; // Eficiência calculada como percentual, baseado em 24 dias antes e 8 dias depois
     eficienciaElement.textContent = `Melhoria na eficiência: ${Math.round(eficiencia)}%`;
 
-    //Obs: o aumento foi alto devido a cadastrar a mesma quantidade de produtos em um terço do tempo após o ChatGPT.
+    // Calcula a quantidade de produtos por mês
+    const produtosPorMes = calcularProdutosPorMes(produtosComDatas);
+
+    // Exibe a quantidade de produtos por mês
+    listaProdutosPorMesElement.innerHTML = "";
+    for (const [mes, quantidade] of Object.entries(produtosPorMes)) {
+        const li = document.createElement("li");
+        li.textContent = `${obterNomeMes(mes)}: ${quantidade} produto(s)`;
+        listaProdutosPorMesElement.appendChild(li);
+    }
+
+    // Calcula e exibe a média de produtos cadastrados por mês
+    const mediaProdutosPorMes = calcularMediaProdutosPorMes(produtosPorMes);
+    mediaMensalElement.textContent = `Média de produtos cadastrados por mês: ${Math.round(mediaProdutosPorMes)}`;
 }
 
 window.onload = calcularQuantidadeTotal;
-
-
-
 
     </script>
 

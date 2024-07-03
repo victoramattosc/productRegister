@@ -172,4 +172,8 @@ export const data = [
     { produto: '65277 - Sapato Ocupacional Classic Sem Salto 36 Branco Vonder', data: '2024-07-02' },
     { produto: '65273 - Sapato Ocupacional Classic Sem Salto 40 Branco Vonder', data: '2024-07-02' },
     { produto: '65118 - Lixa Massa e Madeira 50 Para Desbaste Starrett', data: '2024-07-02' },
+    { produto: 'KIT-65118-25UN - Kit 25 Unid. Lixa Massa e Madeira 50 Para Desbaste Starrett', data: '2024-07-03' },
+    { produto: '65074 - Porca Niveladora Easy Spin Pacote 50 Unidades Cortag', data: '2024-07-03' },
+    { produto: '65071 - Espaçador Nivelador Easy Spin 1,0mm Pacote 50 Unid. Cortag', data: '2024-07-03' },
+    { produto: '65072 - Espaçador Nivelador Easy Spin 1,5mm Pacote 50 Unid. Cortag', data: '2024-07-03' },
 ];
