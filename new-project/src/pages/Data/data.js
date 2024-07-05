@@ -183,4 +183,12 @@ export const data = [
     { produto: '65444 - Jogo Mini Pegadores 4 Peças Vonder', data: '2024-07-04' },
     { produto: '64282 - Adaptador Para Soquetes 1/2" x 3/8" Eda', data: '2024-07-04' },
     { produto: '41490 - Trena Emborrachada 3m Sparta', data: '2024-07-04' },
+    { produto: '65440 - Jogo Grampeador Com 500 Grampos 8mm e Trena 2m Sparta', data: '2024-07-05' },
+    { produto: '64196 - Luva Multiuso Látex Amarela 9/G Kalipso', data: '2024-07-05' },
+    { produto: '21833 - Luva Multiuso Látex Light 7/P Kalipso', data: '2024-07-05' },
+    { produto: '21833 - Luva Multiuso Látex Light 7/P Kalipso', data: '2024-07-05' },
+    { produto: '21789 - Luva Multiuso Látex Light 10/XG Kalipso', data: '2024-07-05' },
+    { produto: '65311 - Luva Proteção Orange Flex 8/M Kalipso', data: '2024-07-05' },
+    { produto: '21732 - Luva Proteção Orange Flex 9/G Kalipso', data: '2024-07-05' },
+    { produto: '65310 - Luva Proteção Orange Flex 9/G Kalipso', data: '2024-07-05' },
 ];
