@@ -227,4 +227,6 @@ export const data = [
     { produto: '65423 - Lixeira Inox Com Pedal 30L Tramontina', data: '2024-07-15' },
     { produto: '65527 - Soquete Torx 1/2" x E10 Gedore Red', data: '2024-07-15' },
     { produto: '65528 - Soquete Torx 1/2" x E16 Gedore Red', data: '2024-07-15' },
+    { produto: '64146 - Kit Reparo Para Pneu de Bicicleta 11 Peças Robust', data: '2024-07-16' },
+    { produto: '30416 - Tesoura Para Poda 180mm Palisad', data: '2024-07-16' },
 ];
