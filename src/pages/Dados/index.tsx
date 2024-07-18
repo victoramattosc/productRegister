@@ -193,8 +193,8 @@ const DadosPage: React.FC = () => {
         <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
         <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes}</p>
         <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois}</p>
-        <p>Aumento percentual na Média de Produtos por Dia: {aumentoMedia.toFixed(2)}%</p>
-        <p>Aumento percentual no Total de Produtos Cadastrados: {aumentoTotal.toFixed(2)}%</p>
+        <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
+        <p>Aumento percentual no Total de Produtos Cadastrados:  {Math.round(aumentoTotal)}%</p>
         <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
       </div>
     </div>
