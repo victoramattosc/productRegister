@@ -187,7 +187,7 @@ const DadosPage: React.FC = () => {
 
         {/* Métricas GPT */}
         <div className={styles.adicional}></div>
-        <h1>Métricas GPT</h1>
+        <h1>Métricas GPT:</h1>
         <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasAntes} dias</p>
         <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasDepois} dias</p>
         <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
