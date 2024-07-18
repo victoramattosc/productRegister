@@ -236,4 +236,6 @@ export const data = [
     { produto: '65437 - Misturador de Tinta e Massas 60 x 8 x 400mm MTX', data: '2024-07-18' },
     { produto: '39393 - Grampo Angular 75mm em Alumínio Sparta', data: '2024-07-18' },
     { produto: '65436 - Grampo Multiuso Para Marceneiro 3" MTX', data: '2024-07-18' },
+    { produto: '64880 - Pasta de Ajuste Nº2 Azul 60ml Riscofer', data: '2024-07-18' },
+    { produto: '64880 - Rodo Para Cereais Cinfer 500x200mm Verde Sem Cabo', data: '2024-07-18' },
 ];
