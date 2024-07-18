@@ -232,4 +232,8 @@ export const data = [
     { produto: '26874 - Macaco Hidráulico Jacaré 2T Com Maleta Sparta', data: '2024-07-17' },
     { produto: '65439 - Grampo Sargento Aperto Rápido 6" MTX', data: '2024-07-17' },
     { produto: '65435 - Jogo de Ferramentas 165 Peças Com Maleta Sparta', data: '2024-07-17' },
+    { produto: '14181 - Disco Diamantado Segmentado 230mm MTX', data: '2024-07-18' },
+    { produto: '65437 - Misturador de Tinta e Massas 60 x 8 x 400mm MTX', data: '2024-07-18' },
+    { produto: '39393 - Grampo Angular 75mm em Alumínio Sparta', data: '2024-07-18' },
+    { produto: '65436 - Grampo Multiuso Para Marceneiro 3" MTX', data: '2024-07-18' },
 ];
