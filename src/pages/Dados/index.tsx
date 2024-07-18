@@ -89,7 +89,7 @@ const DadosPage: React.FC = () => {
         'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
       ];
-      return `${meses[parseInt(mes) - 1]} de${ano}`;
+      return `${meses[parseInt(mes) - 1]} de ${ano}`;
     };
 
     const calcularListaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
