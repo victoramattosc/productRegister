@@ -42,7 +42,7 @@ const DadosPage: React.FC = () => {
         if (antes) {
           return data < dataReferencia;
         } else {
-          return data >= dataReferencia && data <= adicionarDias(dataReferencia, 24);
+          return data >= dataReferencia;
         }
       });
 
@@ -118,7 +118,7 @@ const DadosPage: React.FC = () => {
 
     // Calcula a quantidade de produtos antes e depois de uma data de referência (exemplo: '2024-06-03')
     const quantidadeAntes = produtosComDatas.filter(item => item.data < '2024-06-03').length;
-    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03' && item.data <= adicionarDias('2024-06-03', 24)).length;
+    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03').length;
     setQuantidadeAntes(quantidadeAntes);
     setQuantidadeDepois(quantidadeDepois);
 
@@ -131,7 +131,7 @@ const DadosPage: React.FC = () => {
 
     // Calcula a quantidade de dias antes e depois da data de referência
     const diasAntes = calcularDiferencaDias(dataInicio, '2024-06-03') - 1;
-    const diasDepois = calcularDiferencaDias('2024-06-03', adicionarDias('2024-06-03', 24)) + 1;
+    const diasDepois = calcularDiferencaDias('2024-06-03', dataFim) + 1;
     setDiasAntes(diasAntes);
     setDiasDepois(diasDepois);
 
@@ -189,7 +189,7 @@ const DadosPage: React.FC = () => {
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
     // Calcula a eficiência (percentual baseado nos primeiros 24 dias antes e depois do GPT)
-    const eficiencia = (24 / 8) * 100;
+    const eficiencia = (24 / diasParaAtingirQuantidade) * 100;
     setEficiencia(eficiencia);
 
   }, []);
@@ -215,7 +215,7 @@ const DadosPage: React.FC = () => {
         <h1>Métricas GPT:</h1>
         <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasAntes} dias</p>
         <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasDepois} dias</p>
-        <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade} dias</p>
+        <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
         <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes}</p>
         <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois}</p>
         <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
