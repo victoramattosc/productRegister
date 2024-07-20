@@ -238,4 +238,11 @@ export const data = [
     { produto: '65436 - Grampo Multiuso Para Marceneiro 3" MTX', data: '2024-07-18' },
     { produto: '64880 - Pasta de Ajuste Nº2 Azul 60ml Riscofer', data: '2024-07-18' },
     { produto: '64880 - Rodo Para Cereais Cinfer 500x200mm Verde Sem Cabo', data: '2024-07-18' },
+    { produto: '65570 - Chuveiro Maxi Banho Ultra 220V 5500W Lorenzetti', data: '2024-07-19' },
+    { produto: '65308 - Pulverizador Lateral Compressão Prévia 5L Trapp', data: '2024-07-19' },
+    { produto: '65309 - Pulverizador Lateral Compressão Prévia 11L Trapp', data: '2024-07-19' },
+    { produto: '41337 - Soquete Allen 1/4" x 4mm Gedore Red', data: '2024-07-19' },
+    { produto: '41343 - Soquete Allen 1/4" x 5mm Gedore Red', data: '2024-07-19' },
+    { produto: '41338 - Soquete Allen 1/4" x 6mm Gedore Red', data: '2024-07-20' },
+    { produto: '41340 - Soquete Allen 1/4" x 8mm Gedore Red', data: '2024-07-20' },
 ];

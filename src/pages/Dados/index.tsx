@@ -42,7 +42,7 @@ const DadosPage: React.FC = () => {
         if (antes) {
           return data < dataReferencia;
         } else {
-          return data >= dataReferencia;
+          return data >= dataReferencia && data <= adicionarDias(dataReferencia, 24);
         }
       });
 
@@ -98,6 +98,15 @@ const DadosPage: React.FC = () => {
       );
     };
 
+    const adicionarDias = (dataISO: string, dias: number) => {
+      const date = new Date(dataISO);
+      date.setDate(date.getDate() + dias);
+      const ano = date.getFullYear();
+      const mes = String(date.getMonth() + 1).padStart(2, '0');
+      const dia = String(date.getDate()).padStart(2, '0');
+      return `${ano}-${mes}-${dia}`;
+    };
+
     const produtosComDatas: Produto[] = data.map((item: { data: string, produto: string }) => ({
       data: item.data,
       produto: item.produto
@@ -109,7 +118,7 @@ const DadosPage: React.FC = () => {
 
     // Calcula a quantidade de produtos antes e depois de uma data de referência (exemplo: '2024-06-03')
     const quantidadeAntes = produtosComDatas.filter(item => item.data < '2024-06-03').length;
-    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03').length;
+    const quantidadeDepois = produtosComDatas.filter(item => item.data >= '2024-06-03' && item.data <= adicionarDias('2024-06-03', 24)).length;
     setQuantidadeAntes(quantidadeAntes);
     setQuantidadeDepois(quantidadeDepois);
 
@@ -122,7 +131,7 @@ const DadosPage: React.FC = () => {
 
     // Calcula a quantidade de dias antes e depois da data de referência
     const diasAntes = calcularDiferencaDias(dataInicio, '2024-06-03') - 1;
-    const diasDepois = calcularDiferencaDias('2024-06-03', dataFim) + 1;
+    const diasDepois = calcularDiferencaDias('2024-06-03', adicionarDias('2024-06-03', 24)) + 1;
     setDiasAntes(diasAntes);
     setDiasDepois(diasDepois);
 
@@ -163,7 +172,8 @@ const DadosPage: React.FC = () => {
     const mediaProdutosPorMes = calcularMediaProdutosPorMes(produtosPorMes);
     setMediaMensal(mediaProdutosPorMes);
 
-    const eficiencia = (24 / 8) * 100; // Eficiência calculada como percentual, baseado em 24 dias antes e 8 dias depois
+    // Calcula a eficiência (percentual baseado nos primeiros 24 dias antes e depois do GPT)
+    const eficiencia = (24 / 8) * 100; // Ajuste esta fórmula se necessário
     setEficiencia(eficiencia);
 
   }, []);
@@ -181,7 +191,6 @@ const DadosPage: React.FC = () => {
               <p key={index}>{item}</p>
             ))}
           </div>
-          {/*<p>Média Mensal: {Math.round(mediaMensal)}</p>*/}
           <p>Dias Cadastrando: {diasCadastrando}</p>
         </div>
 
