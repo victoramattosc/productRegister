@@ -172,8 +172,24 @@ const DadosPage: React.FC = () => {
     const mediaProdutosPorMes = calcularMediaProdutosPorMes(produtosPorMes);
     setMediaMensal(mediaProdutosPorMes);
 
+    // Calcula quantos dias depois do ChatGPT demorou para bater a quantidade de antes (quantidadeAntes)
+    let produtosAposChatGPT = 0;
+    let diasParaAtingirQuantidade = 0;
+
+    for (const data of datas) {
+      if (data >= '2024-06-03') {
+        produtosAposChatGPT += produtosPorDia[data];
+        diasParaAtingirQuantidade++;
+        if (produtosAposChatGPT >= quantidadeAntes) {
+          break;
+        }
+      }
+    }
+
+    setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
+
     // Calcula a eficiência (percentual baseado nos primeiros 24 dias antes e depois do GPT)
-    const eficiencia = (24 / 8) * 100; // Ajuste esta fórmula se necessário
+    const eficiencia = (24 / 8) * 100;
     setEficiencia(eficiencia);
 
   }, []);
@@ -199,7 +215,7 @@ const DadosPage: React.FC = () => {
         <h1>Métricas GPT:</h1>
         <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasAntes} dias</p>
         <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasDepois} dias</p>
-        <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
+        <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade} dias</p>
         <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes}</p>
         <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois}</p>
         <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
