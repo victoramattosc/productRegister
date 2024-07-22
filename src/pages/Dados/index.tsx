@@ -24,11 +24,6 @@ const DadosPage: React.FC = () => {
   const [mediaMensal, setMediaMensal] = useState<number>(0);
 
   useEffect(() => {
-    const formatarData = (dataISO: string) => {
-      const [ano, mes, dia] = dataISO.split('-');
-      return `${dia}/${mes}/${ano.slice(2)}`;
-    };
-
     const calcularDiferencaDias = (dataInicio: string, dataFim: string) => {
       const inicio = new Date(dataInicio);
       const fim = new Date(dataFim);
@@ -110,11 +105,11 @@ const DadosPage: React.FC = () => {
 
     // Define a data de referência e as datas limite de 25 dias antes e depois
     const dataReferencia = '2024-06-03';
-    const dataLimiteAntes = adicionarDias(dataReferencia, -25);
-    const dataLimiteDepois = adicionarDias(dataReferencia, 25);
+    const dataLimiteAntes = adicionarDias(dataReferencia, -24);
+    const dataLimiteDepois = adicionarDias(dataReferencia, 24);
 
     // Filtra as datas para os períodos antes e depois do GPT
-    const datasAntes = produtosComDatas.filter(item => item.data >= dataLimiteAntes && item.data < dataReferencia).map(item => item.data);
+    const datasAntes = produtosComDatas.filter(item => item.data >= dataLimiteAntes && item.data <= dataReferencia).map(item => item.data);
     const datasDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= dataLimiteDepois).map(item => item.data);
 
     // Calcula a quantidade de produtos antes e depois de uma data de referência
@@ -127,14 +122,12 @@ const DadosPage: React.FC = () => {
     const datas = produtosComDatas.map(item => item.data);
     const dataInicio = datas[0];
     const dataFim = datas[datas.length - 1];
-    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim);
+    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim) + 1;
     setDiasCadastrando(diferencaDias);
 
-    // Calcula a quantidade de dias antes e depois da data de referência
-    const diasAntes = calcularDiferencaDias(dataLimiteAntes, dataReferencia);
-    const diasDepois = calcularDiferencaDias(dataReferencia, dataLimiteDepois);
-    setDiasAntes(diasAntes);
-    setDiasDepois(diasDepois);
+    // Define os dias antes e depois
+    setDiasAntes(datasAntes.length);
+    setDiasDepois(datasDepois.length);
 
     // Calcula a média de produtos cadastrados por dia antes e depois da data de referência
     const produtosPorDia: { [data: string]: number } = {};
