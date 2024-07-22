@@ -177,13 +177,11 @@ const DadosPage: React.FC = () => {
     let produtosAposChatGPT = 0;
     let diasParaAtingirQuantidade = 0;
 
-    for (const data of datas) {
-      if (data >= dataReferencia && data <= dataLimiteDepois) {
-        produtosAposChatGPT += produtosPorDia[data];
-        diasParaAtingirQuantidade++;
-        if (produtosAposChatGPT >= quantidadeAntes) {
-          break;
-        }
+    for (const data of datasDepois) {
+      produtosAposChatGPT += produtosPorDia[data];
+      diasParaAtingirQuantidade++;
+      if (produtosAposChatGPT >= quantidadeAntes) {
+        break;
       }
     }
 

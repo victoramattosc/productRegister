@@ -245,4 +245,6 @@ export const data = [
     { produto: '41343 - Soquete Allen 1/4" x 5mm Gedore Red', data: '2024-07-19' },
     { produto: '41338 - Soquete Allen 1/4" x 6mm Gedore Red', data: '2024-07-20' },
     { produto: '41340 - Soquete Allen 1/4" x 8mm Gedore Red', data: '2024-07-20' },
+    { produto: '41340 - Broca Forstner 50mm Com Haste Cilíndrica MTX', data: '2024-07-22' },
+    { produto: '41340 - Linha Trançada Para Pedreiro 100m Cortag', data: '2024-07-22' },
 ];
