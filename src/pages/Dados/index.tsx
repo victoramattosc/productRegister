@@ -157,9 +157,7 @@ const DadosPage: React.FC = () => {
     setAumentoMedia(aumentoMedia);
 
     // Calcula o aumento percentual no total de produtos cadastrados
-    const totalAntesPorDia = quantidadeAntes / diasAntes;
-    const totalDepoisPorDia = quantidadeDepois / diasDepois;
-    const aumentoTotal = calcularPorcentagemAumento(totalAntesPorDia, totalDepoisPorDia);
+    const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeDepois);
     setAumentoTotal(aumentoTotal);
 
     // Calcula a quantidade de produtos por mês
