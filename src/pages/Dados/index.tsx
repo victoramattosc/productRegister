@@ -24,6 +24,11 @@ const DadosPage: React.FC = () => {
   const [mediaMensal, setMediaMensal] = useState<number>(0);
 
   useEffect(() => {
+    const formatarData = (dataISO: string) => {
+      const [ano, mes, dia] = dataISO.split('-');
+      return `${dia}/${mes}/${ano.slice(2)}`;
+    };
+
     const calcularDiferencaDias = (dataInicio: string, dataFim: string) => {
       const inicio = new Date(dataInicio);
       const fim = new Date(dataFim);
@@ -103,13 +108,13 @@ const DadosPage: React.FC = () => {
     const quantidadeTotal = produtosComDatas.length;
     setQuantidadeTotal(quantidadeTotal);
 
-    // Define a data de referência e as datas limite de 25 dias antes e depois
+    // Define a data de referência e as datas limite de 24 dias antes e depois
     const dataReferencia = '2024-06-03';
     const dataLimiteAntes = adicionarDias(dataReferencia, -24);
     const dataLimiteDepois = adicionarDias(dataReferencia, 24);
 
     // Filtra as datas para os períodos antes e depois do GPT
-    const datasAntes = produtosComDatas.filter(item => item.data >= dataLimiteAntes && item.data <= dataReferencia).map(item => item.data);
+    const datasAntes = produtosComDatas.filter(item => item.data >= dataLimiteAntes && item.data < dataReferencia).map(item => item.data);
     const datasDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= dataLimiteDepois).map(item => item.data);
 
     // Calcula a quantidade de produtos antes e depois de uma data de referência
@@ -122,12 +127,14 @@ const DadosPage: React.FC = () => {
     const datas = produtosComDatas.map(item => item.data);
     const dataInicio = datas[0];
     const dataFim = datas[datas.length - 1];
-    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim) + 1;
+    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim);
     setDiasCadastrando(diferencaDias);
 
-    // Define os dias antes e depois
-    setDiasAntes(datasAntes.length);
-    setDiasDepois(datasDepois.length);
+    // Calcula a quantidade de dias antes e depois da data de referência
+    const diasAntes = calcularDiferencaDias(dataLimiteAntes, dataReferencia);
+    const diasDepois = calcularDiferencaDias(dataReferencia, dataLimiteDepois);
+    setDiasAntes(diasAntes);
+    setDiasDepois(diasDepois);
 
     // Calcula a média de produtos cadastrados por dia antes e depois da data de referência
     const produtosPorDia: { [data: string]: number } = {};
@@ -150,7 +157,9 @@ const DadosPage: React.FC = () => {
     setAumentoMedia(aumentoMedia);
 
     // Calcula o aumento percentual no total de produtos cadastrados
-    const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeDepois);
+    const totalAntesPorDia = quantidadeAntes / diasAntes;
+    const totalDepoisPorDia = quantidadeDepois / diasDepois;
+    const aumentoTotal = calcularPorcentagemAumento(totalAntesPorDia, totalDepoisPorDia);
     setAumentoTotal(aumentoTotal);
 
     // Calcula a quantidade de produtos por mês
@@ -168,18 +177,20 @@ const DadosPage: React.FC = () => {
     let produtosAposChatGPT = 0;
     let diasParaAtingirQuantidade = 0;
 
-    for (const data of datasDepois) {
-      produtosAposChatGPT += produtosPorDia[data];
-      diasParaAtingirQuantidade++;
-      if (produtosAposChatGPT >= quantidadeAntes) {
-        break;
+    for (const data of datas) {
+      if (data >= dataReferencia && data <= dataLimiteDepois) {
+        produtosAposChatGPT += produtosPorDia[data];
+        diasParaAtingirQuantidade++;
+        if (produtosAposChatGPT >= quantidadeAntes) {
+          break;
+        }
       }
     }
 
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
-    // Calcula a eficiência (percentual baseado nos primeiros 25 dias antes e depois do GPT)
-    const eficiencia = (25 / diasParaAtingirQuantidade) * 100;
+    // Calcula a eficiência (percentual baseado nos primeiros 24 dias antes e depois do GPT)
+    const eficiencia = (24 / diasParaAtingirQuantidade) * 100;
     setEficiencia(eficiencia);
 
   }, []);
