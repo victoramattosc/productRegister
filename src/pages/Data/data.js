@@ -247,4 +247,6 @@ export const data = [
     { produto: '41340 - Soquete Allen 1/4" x 8mm Gedore Red', data: '2024-07-20' },
     { produto: '41340 - Broca Forstner 50mm Com Haste Cilíndrica MTX', data: '2024-07-22' },
     { produto: '41340 - Linha Trançada Para Pedreiro 100m Cortag', data: '2024-07-22' },
+    { produto: '65058 - Prumo de Parede 500g Cortag', data: '2024-07-22' },
+    { produto: '65059 - Prumo de Parede 750g Cortag', data: '2024-07-22' },
 ];

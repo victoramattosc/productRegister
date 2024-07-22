@@ -149,16 +149,16 @@ const DadosPage: React.FC = () => {
 
     const mediaAntes = calcularMedia(produtosPorDia, datasAntes);
     const mediaDepois = calcularMedia(produtosPorDia, datasDepois);
-    setMediaAntes(Math.round(mediaAntes));
-    setMediaDepois(Math.round(mediaDepois));
+    setMediaAntes(Math.round(mediaAntes * 100) / 100);
+    setMediaDepois(Math.round(mediaDepois * 100) / 100);
 
     // Calcula o aumento percentual na média de produtos por dia
     const aumentoMedia = calcularPorcentagemAumento(mediaAntes, mediaDepois);
-    setAumentoMedia(aumentoMedia);
+    setAumentoMedia(Math.round(aumentoMedia * 100) / 100);
 
     // Calcula o aumento percentual no total de produtos cadastrados
     const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeDepois);
-    setAumentoTotal(aumentoTotal);
+    setAumentoTotal(Math.round(aumentoTotal * 100) / 100);
 
     // Calcula a quantidade de produtos por mês
     const produtosPorMes = calcularProdutosPorMes(produtosComDatas);
@@ -187,7 +187,7 @@ const DadosPage: React.FC = () => {
 
     // Calcula a eficiência (percentual baseado nos primeiros 24 dias antes e depois do GPT)
     const eficiencia = (24 / diasParaAtingirQuantidade) * 100;
-    setEficiencia(eficiencia);
+    setEficiencia(Math.round(eficiencia * 100) / 100);
 
   }, []);
 
@@ -213,8 +213,8 @@ const DadosPage: React.FC = () => {
         <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasAntes} dias</p>
         <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasDepois} dias</p>
         <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
-        <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes}</p>
-        <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois}</p>
+        <p>Média de Produtos por Dia antes do dia 03/06: {Math.round(mediaAntes)}</p>
+        <p>Média de Produtos por Dia depois do dia 03/06: {Math.round(mediaDepois)}</p>
         <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
         <p>Aumento percentual no Total de Produtos Cadastrados:  {Math.round(aumentoTotal)}%</p>
         <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
