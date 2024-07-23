@@ -249,4 +249,11 @@ export const data = [
     { produto: '41340 - Linha Trançada Para Pedreiro 100m Cortag', data: '2024-07-22' },
     { produto: '65058 - Prumo de Parede 500g Cortag', data: '2024-07-22' },
     { produto: '65059 - Prumo de Parede 750g Cortag', data: '2024-07-22' },
+    { produto: '64221 - Chave Allen Longa 2,5mm Gedore', data: '2024-07-23' },
+    { produto: '64142 - Chave Combinada Com Catraca 10mm Gedore', data: '2024-07-23' },
+    { produto: '64143 - Chave Combinada Com Catraca 13mm Gedore', data: '2024-07-23' },
+    { produto: '64143 - Chave Combinada Com Catraca 13mm Gedore', data: '2024-07-23' },
+    { produto: '64220 - Chave Combinada 23mm Gedore Red', data: '2024-07-23' },
+    { produto: '64219 - Chave Combinada 26mm Gedore Red', data: '2024-07-23' },
+    { produto: '64218 - Chave Allen Longa 17mm Gedore', data: '2024-07-23' },
 ];
