@@ -108,14 +108,13 @@ const DadosPage: React.FC = () => {
     const quantidadeTotal = produtosComDatas.length;
     setQuantidadeTotal(quantidadeTotal);
 
-    // Define a data de referência e as datas limite de 24 dias antes e depois
+    // Define a data de referência e as datas limite de 25 dias antes e depois
     const dataReferencia = '2024-06-03';
-    const dataLimiteAntes = adicionarDias(dataReferencia, -24);
-    const dataLimiteDepois = adicionarDias(dataReferencia, 24);
+    const diasDeComparacao = 25;
 
     // Filtra as datas para os períodos antes e depois do GPT
-    const datasAntes = produtosComDatas.filter(item => item.data >= dataLimiteAntes && item.data < dataReferencia).map(item => item.data);
-    const datasDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= dataLimiteDepois).map(item => item.data);
+    const datasAntes = produtosComDatas.filter(item => item.data >= '2024-05-09' && item.data < dataReferencia).map(item => item.data);
+    const datasDepois = produtosComDatas.filter(item => item.data >= dataReferencia).map(item => item.data).slice(0, diasDeComparacao);
 
     // Calcula a quantidade de produtos antes e depois de uma data de referência
     const quantidadeAntes = datasAntes.length;
@@ -131,8 +130,8 @@ const DadosPage: React.FC = () => {
     setDiasCadastrando(diferencaDias);
 
     // Calcula a quantidade de dias antes e depois da data de referência
-    const diasAntes = calcularDiferencaDias(dataLimiteAntes, dataReferencia);
-    const diasDepois = calcularDiferencaDias(dataReferencia, dataLimiteDepois);
+    const diasAntes = calcularDiferencaDias('2024-05-09', dataReferencia);
+    const diasDepois = calcularDiferencaDias(dataReferencia, adicionarDias(dataReferencia, diasDeComparacao));
     setDiasAntes(diasAntes);
     setDiasDepois(diasDepois);
 
@@ -178,7 +177,7 @@ const DadosPage: React.FC = () => {
     let diasParaAtingirQuantidade = 0;
 
     for (const data of datas) {
-      if (data >= dataReferencia && data <= dataLimiteDepois) {
+      if (data >= dataReferencia && diasParaAtingirQuantidade < diasDeComparacao) {
         produtosAposChatGPT += produtosPorDia[data];
         diasParaAtingirQuantidade++;
         if (produtosAposChatGPT >= quantidadeAntes) {
@@ -189,8 +188,8 @@ const DadosPage: React.FC = () => {
 
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
-    // Calcula a eficiência (percentual baseado nos primeiros 24 dias antes e depois do GPT)
-    const eficiencia = (24 / diasParaAtingirQuantidade) * 100;
+    // Calcula a eficiência (percentual baseado nos primeiros 25 dias antes e depois do GPT)
+    const eficiencia = (diasDeComparacao / diasParaAtingirQuantidade) * 100;
     setEficiencia(eficiencia);
 
   }, []);

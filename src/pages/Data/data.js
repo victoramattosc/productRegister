@@ -256,4 +256,12 @@ export const data = [
     { produto: '64220 - Chave Combinada 23mm Gedore Red', data: '2024-07-23' },
     { produto: '64219 - Chave Combinada 26mm Gedore Red', data: '2024-07-23' },
     { produto: '64218 - Chave Allen Longa 17mm Gedore', data: '2024-07-23' },
+    { produto: '65363 - Máquina de Esticar Arame Cabo Maciço 60cm Cinfer', data: '2024-07-24' },
+    { produto: '65362 - Catraca Com Roseta Para Emendar Arame Liso Cinfer', data: '2024-07-24' },
+    { produto: '65104 - Chave de Virar Ferro 3/16" São Romão', data: '2024-07-24' },
+    { produto: '65046 - Sabão em Pasta 900g Gitanes', data: '2024-07-25' },
+    { produto: '65047 - Pasta em Gel Desengraxante Gitanes 500g', data: '2024-07-25' },
+    { produto: '60561 - Abraçadeira de Nylon 200mm x 3,6mm Branca 100 Unid. Nove54', data: '2024-07-25' },
+    { produto: '65670 - Broca Chata Para Madeira 9/16" HTOM', data: '2024-07-25' },
+    { produto: '65669 - Broca Chata Para Madeira 11/16" HTOM', data: '2024-07-25' },
 ];
