@@ -277,4 +277,10 @@ export const data = [
     { produto: '65639 - Broca Para Fibrocimento e Mourao 1/2" x 450mm HTOM', data: '2024-07-27' },
     { produto: '65636 - Broca Para Fibrocimento e Mourao 5/8" x 450mm HTOM', data: '2024-07-27' },
     { produto: '65687 - Jogo de Brocas Aço Rápido 1,0 a 13,00mm 25 Peças Hessen', data: '2024-07-27' },
+    { produto: '65652 - Disco Removedor Com Haste 100mm HTOM', data: '2024-07-29' },
+    { produto: '65695 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 20mm HTOM', data: '2024-07-29' },
+    { produto: '65696 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 18mm HTOM', data: '2024-07-29' },
+    { produto: '65684 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 16mm HTOM', data: '2024-07-29' },
+    { produto: '65692 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 14mm HTOM', data: '2024-07-29' },
+    { produto: '65687 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 12mm HTOM', data: '2024-07-29' },
 ];
