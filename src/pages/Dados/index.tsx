@@ -145,7 +145,7 @@ const DadosPage: React.FC = () => {
     setAumentoMedia(aumentoMedia);
 
     // Calcula o aumento percentual no total de produtos cadastrados
-    const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeTotal);
+    const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeDepois);
     setAumentoTotal(aumentoTotal);
 
     // Calcula quantos dias depois do ChatGPT demorou para bater a quantidade de antes
@@ -161,7 +161,7 @@ const DadosPage: React.FC = () => {
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
     // Calcula a eficiência (percentual baseado nos primeiros 25 dias antes e depois do GPT)
-    const eficiencia = (diasAntes / diasParaAtingirQuantidade) * 100;
+    const eficiencia = (25 / diasParaAtingirQuantidade) * 100;
     setEficiencia(eficiencia);
 
     // Calcula a quantidade de produtos por mês
@@ -190,6 +190,7 @@ const DadosPage: React.FC = () => {
               <p key={index}>{item}</p>
             ))}
           </div>
+          <p>Média de produtos cadastrados por mês: {mediaMensal.toFixed(2)}</p>
         </div>
 
         {/* Métricas GPT */}
@@ -203,7 +204,6 @@ const DadosPage: React.FC = () => {
         <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
         <p>Aumento percentual no Total de Produtos Cadastrados:  {Math.round(aumentoTotal)}%</p>
         <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
-        <p>Média de produtos cadastrados por mês: {mediaMensal.toFixed(2)}</p>
       </div>
     </div>
   );
