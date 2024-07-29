@@ -26,6 +26,7 @@ const DadosPage: React.FC = () => {
       const inicio = new Date(dataInicio);
       const fim = new Date(dataFim);
       const diferencaMilissegundos = fim.getTime() - inicio.getTime();
+      // Adiciona 1 para incluir o dia inicial
       return Math.ceil(diferencaMilissegundos / (1000 * 60 * 60 * 24)) + 1;
     };
 
@@ -43,119 +44,82 @@ const DadosPage: React.FC = () => {
       produto: item.produto
     }));
 
-    // Calcula a quantidade total de produtos
-    const quantidadeTotal = produtosComDatas.length;
-    setQuantidadeTotal(quantidadeTotal);
+    // Verificar se existem produtos antes de continuar
+    if (produtosComDatas.length === 0) {
+      console.error('Nenhum produto encontrado nos dados.');
+      return;
+    }
+
+    // Calcula a quantidade total de produtos cadastrados
+    setQuantidadeTotal(produtosComDatas.length);
 
     // Define a data de referência e o número de dias para comparação
     const dataReferencia = '2024-06-03';
     const dataInicioAntes = '2024-05-09';
-    const diasDeComparacao = calcularDiferencaDias(dataInicioAntes, '2024-06-02');
+    const diasPeriodo = calcularDiferencaDias(dataInicioAntes, '2024-06-02');
 
-    // Filtra as datas para os períodos antes e depois do GPT
-    const datasAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data < dataReferencia).map(item => item.data);
-    const datasDepois = produtosComDatas.filter(item => item.data >= dataReferencia).map(item => item.data).slice(0, diasDeComparacao);
+    // Filtrar os produtos para os períodos antes e depois
+    const produtosAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data < dataReferencia);
+    const produtosDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= adicionarDias(dataReferencia, diasPeriodo - 1));
 
-    // Calcula a quantidade de produtos antes e depois de uma data de referência
-    const quantidadeAntes = datasAntes.length;
-    const quantidadeDepois = datasDepois.length;
+    // Quantidade de produtos
+    const quantidadeAntes = produtosAntes.length;
+    const quantidadeDepois = produtosDepois.length;
     setQuantidadeAntes(quantidadeAntes);
     setQuantidadeDepois(quantidadeDepois);
 
-    // Calcula a média de produtos cadastrados por dia antes e depois da data de referência
-    const produtosPorDia: { [data: string]: number } = {};
-    produtosComDatas.forEach(item => {
-      const dataItem = item.data;
-      if (produtosPorDia[dataItem]) {
-        produtosPorDia[dataItem]++;
-      } else {
-        produtosPorDia[dataItem] = 1;
-      }
-    });
+    // Calcula a média de produtos por dia
+    const calcularMedia = (produtos: Produto[]) => produtos.length / diasPeriodo;
 
-    const calcularMedia = (datasFiltradas: string[]) => {
-      if (datasFiltradas.length === 0) return 0;
-      const totalProdutos = datasFiltradas.reduce((total, data) => total + (produtosPorDia[data] || 0), 0);
-      return totalProdutos / datasFiltradas.length;
-    };
-
-    const mediaAntes = calcularMedia(datasAntes);
-    const mediaDepois = calcularMedia(datasDepois);
+    const mediaAntes = calcularMedia(produtosAntes);
+    const mediaDepois = calcularMedia(produtosDepois);
     setMediaAntes(mediaAntes);
     setMediaDepois(mediaDepois);
 
-    // Calcula o aumento percentual na média de produtos por dia
-    const aumentoMedia = ((mediaDepois - mediaAntes) / mediaAntes) * 100;
+    // Aumento percentual na média de produtos por dia
+    const aumentoMedia = mediaAntes ? ((mediaDepois - mediaAntes) / mediaAntes) * 100 : 0;
     setAumentoMedia(aumentoMedia);
 
-    // Calcula o aumento percentual no total de produtos cadastrados
-    const aumentoTotal = ((quantidadeDepois - quantidadeAntes) / quantidadeAntes) * 100;
+    // Aumento percentual no total de produtos cadastrados
+    const aumentoTotal = quantidadeAntes ? ((quantidadeDepois - quantidadeAntes) / quantidadeAntes) * 100 : 0;
     setAumentoTotal(aumentoTotal);
 
-    // Calcula quantos dias depois do ChatGPT demorou para bater a quantidade de antes (quantidadeAntes)
-    let produtosAposChatGPT = 0;
+    // Calcular quantos dias após o início do GPT foram necessários para atingir a quantidade de produtos de antes
+    let produtosAcumulados = 0;
     let diasParaAtingirQuantidade = 0;
 
-    for (const data of datasDepois) {
-      produtosAposChatGPT += produtosPorDia[data];
+    for (const produto of produtosDepois) {
+      produtosAcumulados++;
       diasParaAtingirQuantidade++;
-      if (produtosAposChatGPT >= quantidadeAntes) break;
+      if (produtosAcumulados >= quantidadeAntes) break;
     }
-
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
-    // Calcula a eficiência (percentual baseado nos primeiros 25 dias antes e depois do GPT)
-    const eficiencia = (diasDeComparacao / diasParaAtingirQuantidade) * 100;
+    // Eficiência na obtenção de produtos comparando os períodos
+    const eficiencia = diasParaAtingirQuantidade > 0 ? (diasPeriodo / diasParaAtingirQuantidade) * 100 : 0;
     setEficiencia(eficiencia);
 
     // Calcula a quantidade de dias desde o primeiro até o último produto cadastrado
     const dataInicio = produtosComDatas[0].data;
     const dataFim = produtosComDatas[produtosComDatas.length - 1].data;
-    const diferencaDias = calcularDiferencaDias(dataInicio, dataFim);
-    setDiasCadastrando(diferencaDias);
+    const diasCadastrando = calcularDiferencaDias(dataInicio, dataFim);
+    setDiasCadastrando(diasCadastrando);
 
     // Calcula a quantidade de produtos por mês
-    const calcularProdutosPorMes = (produtos: Produto[]) => {
-      const produtosPorMes: { [mes: string]: number } = {};
-      produtos.forEach(item => {
-        const [ano, mes] = item.data.split('-');
-        const chaveMes = `${ano}-${mes}`;
-        if (produtosPorMes[chaveMes]) {
-          produtosPorMes[chaveMes]++;
-        } else {
-          produtosPorMes[chaveMes] = 1;
-        }
-      });
-      return produtosPorMes;
-    };
+    const produtosPorMes = produtosComDatas.reduce((acc: { [mes: string]: number }, produto: Produto) => {
+      const [ano, mes] = produto.data.split('-');
+      const chaveMes = `${ano}-${mes}`;
+      if (!acc[chaveMes]) acc[chaveMes] = 0;
+      acc[chaveMes]++;
+      return acc;
+    }, {});
 
-    const produtosPorMes = calcularProdutosPorMes(produtosComDatas);
-
-    const calcularListaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
-      const obterNomeMes = (dataISO: string) => {
-        const [ano, mes] = dataISO.split('-');
-        const meses = [
-          'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-          'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-        ];
-        return `${meses[parseInt(mes) - 1]} de ${ano}`;
-      };
-      return Object.entries(produtosPorMes).map(
-        ([mes, quantidade]) => `${obterNomeMes(mes)}: ${quantidade} produto(s)`
-      );
-    };
-
-    const listaProdutosPorMesArray = calcularListaProdutosPorMes(produtosPorMes);
+    // Exibe a quantidade de produtos por mês
+    const listaProdutosPorMesArray = Object.entries(produtosPorMes).map(([mes, quantidade]) => `${mes}: ${quantidade} produto(s)`);
     setListaProdutosPorMes(listaProdutosPorMesArray);
 
-    // Calcula a média de produtos cadastrados por mês
-    const calcularMediaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
-      const totalMeses = Object.keys(produtosPorMes).length;
-      const totalProdutos = Object.values(produtosPorMes).reduce((total, quantidade) => total + quantidade, 0);
-      return totalProdutos / totalMeses;
-    };
-
-    const mediaProdutosPorMes = calcularMediaProdutosPorMes(produtosPorMes);
+    // Calcula e exibe a média de produtos cadastrados por mês
+    const mediaProdutosPorMes = Object.values(produtosPorMes).reduce((total, qtd) => total + qtd, 0) / Object.keys(produtosPorMes).length;
     setMediaMensal(mediaProdutosPorMes);
 
   }, []);
@@ -179,14 +143,14 @@ const DadosPage: React.FC = () => {
         {/* Métricas GPT */}
         <div className={styles.adicional}></div>
         <h1>Métricas GPT:</h1>
-        <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasDeComparacao} dias</p>
-        <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasDeComparacao} dias</p>
+        <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasPeriodo} dias</p>
+        <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasPeriodo} dias</p>
         <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
         <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes.toFixed(2)}</p>
         <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois.toFixed(2)}</p>
-        <p>Aumento percentual na Média de Produtos por Dia: {Math.round(aumentoMedia)}%</p>
-        <p>Aumento percentual no Total de Produtos Cadastrados: {Math.round(aumentoTotal)}%</p>
-        <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
+        <p>Aumento percentual na Média de Produtos por Dia: {aumentoMedia.toFixed(2)}%</p>
+        <p>Aumento percentual no Total de Produtos Cadastrados: {aumentoTotal.toFixed(2)}%</p>
+        <p>Melhora na eficiência de: {eficiencia.toFixed(2)}%</p>
       </div>
     </div>
   );
