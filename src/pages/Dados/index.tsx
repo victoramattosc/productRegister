@@ -17,6 +17,7 @@ const DadosPage: React.FC = () => {
   const [mediaAntes, setMediaAntes] = useState<number>(0);
   const [mediaDepois, setMediaDepois] = useState<number>(0);
   const [aumentoMedia, setAumentoMedia] = useState<number>(0);
+  const [aumentoTotal, setAumentoTotal] = useState<number>(0);
   const [eficiencia, setEficiencia] = useState<number>(0);
   const [listaProdutosPorMes, setListaProdutosPorMes] = useState<string[]>([]);
   const [mediaMensal, setMediaMensal] = useState<number>(0);
@@ -45,6 +46,7 @@ const DadosPage: React.FC = () => {
     };
 
     const calcularPorcentagemAumento = (valorAntigo: number, valorNovo: number) => {
+      if (valorAntigo === 0) return 0;
       const diferenca = valorNovo - valorAntigo;
       return (diferenca / valorAntigo) * 100;
     };
@@ -142,6 +144,10 @@ const DadosPage: React.FC = () => {
     const aumentoMedia = calcularPorcentagemAumento(mediaAntes, mediaDepois);
     setAumentoMedia(aumentoMedia);
 
+    // Calcula o aumento percentual no total de produtos cadastrados
+    const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeTotal);
+    setAumentoTotal(aumentoTotal);
+
     // Calcula quantos dias depois do ChatGPT demorou para bater a quantidade de antes
     let produtosAposChatGPT = 0;
     let diasParaAtingirQuantidade = 0;
@@ -195,7 +201,9 @@ const DadosPage: React.FC = () => {
         <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes}</p>
         <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois}</p>
         <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
+        <p>Aumento percentual no Total de Produtos Cadastrados:  {Math.round(aumentoTotal)}%</p>
         <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
+        <p>Média de produtos cadastrados por mês: {mediaMensal.toFixed(2)}</p>
       </div>
     </div>
   );
