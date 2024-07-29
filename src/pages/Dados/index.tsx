@@ -26,7 +26,7 @@ const DadosPage: React.FC = () => {
       const inicio = new Date(dataInicio);
       const fim = new Date(dataFim);
       const diferencaMilissegundos = fim.getTime() - inicio.getTime();
-      // Adiciona 1 para incluir o dia inicial
+      // Inclui o dia inicial e o dia final
       return Math.ceil(diferencaMilissegundos / (1000 * 60 * 60 * 24)) + 1;
     };
 
@@ -44,7 +44,6 @@ const DadosPage: React.FC = () => {
       produto: item.produto
     }));
 
-    // Verificar se existem produtos antes de continuar
     if (produtosComDatas.length === 0) {
       console.error('Nenhum produto encontrado nos dados.');
       return;
@@ -56,11 +55,14 @@ const DadosPage: React.FC = () => {
     // Define a data de referência e o número de dias para comparação
     const dataReferencia = '2024-06-03';
     const dataInicioAntes = '2024-05-09';
-    const diasPeriodo = calcularDiferencaDias(dataInicioAntes, '2024-06-02');
+    const dataFimAntes = '2024-06-02';
+
+    // Calcular o número de dias no período antes do GPT
+    const diasPeriodoAntes = calcularDiferencaDias(dataInicioAntes, dataFimAntes);
 
     // Filtrar os produtos para os períodos antes e depois
-    const produtosAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data < dataReferencia);
-    const produtosDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= adicionarDias(dataReferencia, diasPeriodo - 1));
+    const produtosAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data <= dataFimAntes);
+    const produtosDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= adicionarDias(dataReferencia, diasPeriodoAntes - 1));
 
     // Quantidade de produtos
     const quantidadeAntes = produtosAntes.length;
@@ -69,10 +71,12 @@ const DadosPage: React.FC = () => {
     setQuantidadeDepois(quantidadeDepois);
 
     // Calcula a média de produtos por dia
-    const calcularMedia = (produtos: Produto[]) => produtos.length / diasPeriodo;
+    const calcularMedia = (produtos: Produto[], dias: number) => produtos.length / dias;
 
-    const mediaAntes = calcularMedia(produtosAntes);
-    const mediaDepois = calcularMedia(produtosDepois);
+    const mediaAntes = calcularMedia(produtosAntes, diasPeriodoAntes);
+    const dataFimDepois = adicionarDias(dataReferencia, diasPeriodoAntes - 1);
+    const diasPeriodoDepois = calcularDiferencaDias(dataReferencia, dataFimDepois);
+    const mediaDepois = calcularMedia(produtosDepois, diasPeriodoDepois);
     setMediaAntes(mediaAntes);
     setMediaDepois(mediaDepois);
 
@@ -96,7 +100,7 @@ const DadosPage: React.FC = () => {
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
     // Eficiência na obtenção de produtos comparando os períodos
-    const eficiencia = diasParaAtingirQuantidade > 0 ? (diasPeriodo / diasParaAtingirQuantidade) * 100 : 0;
+    const eficiencia = diasParaAtingirQuantidade > 0 ? (diasPeriodoAntes / diasParaAtingirQuantidade) * 100 : 0;
     setEficiencia(eficiencia);
 
     // Calcula a quantidade de dias desde o primeiro até o último produto cadastrado
@@ -143,8 +147,8 @@ const DadosPage: React.FC = () => {
         {/* Métricas GPT */}
         <div className={styles.adicional}></div>
         <h1>Métricas GPT:</h1>
-        <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasPeriodo} dias</p>
-        <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasPeriodo} dias</p>
+        <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em {diasPeriodoAntes} dias</p>
+        <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em {diasPeriodoDepois} dias</p>
         <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
         <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes.toFixed(2)}</p>
         <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois.toFixed(2)}</p>
