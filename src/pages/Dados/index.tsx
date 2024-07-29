@@ -26,8 +26,7 @@ const DadosPage: React.FC = () => {
       const inicio = new Date(dataInicio);
       const fim = new Date(dataFim);
       const diferencaMilissegundos = fim.getTime() - inicio.getTime();
-      // Inclui o dia inicial e o dia final
-      return Math.ceil(diferencaMilissegundos / (1000 * 60 * 60 * 24)) + 1;
+      return Math.ceil(diferencaMilissegundos / (1000 * 60 * 60 * 24)) + 1; // Inclui o dia final
     };
 
     const adicionarDias = (dataISO: string, dias: number) => {
@@ -62,7 +61,7 @@ const DadosPage: React.FC = () => {
 
     // Filtrar os produtos para os períodos antes e depois
     const produtosAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data <= dataFimAntes);
-    const produtosDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= adicionarDias(dataReferencia, diasPeriodoAntes - 1));
+    const produtosDepois = produtosComDatas.filter(item => item.data >= dataReferencia);
 
     // Quantidade de produtos
     const quantidadeAntes = produtosAntes.length;
@@ -74,8 +73,7 @@ const DadosPage: React.FC = () => {
     const calcularMedia = (produtos: Produto[], dias: number) => produtos.length / dias;
 
     const mediaAntes = calcularMedia(produtosAntes, diasPeriodoAntes);
-    const dataFimDepois = adicionarDias(dataReferencia, diasPeriodoAntes - 1);
-    const diasPeriodoDepois = calcularDiferencaDias(dataReferencia, dataFimDepois);
+    const diasPeriodoDepois = calcularDiferencaDias(dataReferencia, produtosComDatas[produtosComDatas.length - 1].data);
     const mediaDepois = calcularMedia(produtosDepois, diasPeriodoDepois);
     setMediaAntes(mediaAntes);
     setMediaDepois(mediaDepois);
