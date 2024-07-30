@@ -283,4 +283,11 @@ export const data = [
     { produto: '65684 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 16mm HTOM', data: '2024-07-29' },
     { produto: '65692 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 14mm HTOM', data: '2024-07-29' },
     { produto: '65687 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 12mm HTOM', data: '2024-07-29' },
+    { produto: '65687 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 12mm HTOM', data: '2024-07-29' },
+    { produto: '65588 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 10mm HTOM', data: '2024-07-30' },
+    { produto: '65591 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 22mm HTOM', data: '2024-07-30' },
+    { produto: '65590 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 25mm HTOM', data: '2024-07-30' },
+    { produto: '65594 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 28mm HTOM', data: '2024-07-30' },
+    { produto: '65589 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 30mm HTOM', data: '2024-07-30' },
+    { produto: '65593 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 32mm HTOM', data: '2024-07-30' },
 ];
