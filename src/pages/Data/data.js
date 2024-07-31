@@ -290,4 +290,10 @@ export const data = [
     { produto: '65594 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 28mm HTOM', data: '2024-07-30' },
     { produto: '65589 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 30mm HTOM', data: '2024-07-30' },
     { produto: '65593 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 32mm HTOM', data: '2024-07-30' },
+    { produto: '65325 - Jogo de Facas 7 Peças Palisad', data: '2024-07-31' },
+    { produto: '65641 - Broca Para Fibrocimento e Mourao 7/16" x 450mm HTOM', data: '2024-07-31' },
+    { produto: '65640 - Broca Para Fibrocimento e Mourao 7/16" x 300mm HTOM', data: '2024-07-31' },
+    { produto: '65651 - Broca Rápida Longa Para Madeira 8,0 x 300mm HTOM', data: '2024-07-31' },
+    { produto: '65648 - Broca Rápida Longa Para Madeira 11,0 x 300mm HTOM', data: '2024-07-31' },
+    { produto: '65649 - Broca Rápida Extra Longa Para Madeira 10,0 x 450mm HTOM', data: '2024-07-31' },
 ];
