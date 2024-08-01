@@ -296,4 +296,7 @@ export const data = [
     { produto: '65651 - Broca Rápida Longa Para Madeira 8,0 x 300mm HTOM', data: '2024-07-31' },
     { produto: '65648 - Broca Rápida Longa Para Madeira 11,0 x 300mm HTOM', data: '2024-07-31' },
     { produto: '65649 - Broca Rápida Extra Longa Para Madeira 10,0 x 450mm HTOM', data: '2024-07-31' },
+    { produto: '65650 - Broca Rápida Extra Longa Para Madeira 11,0 x 450mm HTOM', data: '2024-08-01' },
+    { produto: '65665 - Soquete Magnético Sextavado M11 x 65mm HTOM', data: '2024-08-01' },
+    { produto: '65666 - Soquete Magnético Sextavado M13 x 65mm HTOM', data: '2024-08-01' },
 ];
