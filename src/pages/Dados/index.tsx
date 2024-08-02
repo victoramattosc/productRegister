@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { data } from '../Data/data';
 import styles from "./Dados.module.scss";
+import BarChat from '../components/BarChat'; // Import the BarChat component
 
 interface Produto {
   data: string;
@@ -21,6 +22,7 @@ const DadosPage: React.FC = () => {
   const [eficiencia, setEficiencia] = useState<number>(0);
   const [listaProdutosPorMes, setListaProdutosPorMes] = useState<string[]>([]);
   const [mediaMensal, setMediaMensal] = useState<number>(0);
+  const [produtosPorMes, setProdutosPorMes] = useState<{ [mes: string]: number }>({});
 
   useEffect(() => {
     const formatarData = (dataISO: string) => {
@@ -166,6 +168,7 @@ const DadosPage: React.FC = () => {
 
     // Calcula a quantidade de produtos por mês
     const produtosPorMes = calcularProdutosPorMes(produtosComDatas);
+    setProdutosPorMes(produtosPorMes);
 
     // Exibe a quantidade de produtos por mês
     const listaProdutosPorMesArray = calcularListaProdutosPorMes(produtosPorMes);
@@ -204,6 +207,12 @@ const DadosPage: React.FC = () => {
         <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
         <p>Aumento percentual no Total de Produtos Cadastrados:  {Math.round(aumentoTotal)}%</p>
         <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
+      </div>
+
+      {/* Gráfico de Barras */}
+      <div className={styles.chart}>
+        <h2>Produtos Cadastrados por Mês</h2>
+        <BarChat produtosPorMes={produtosPorMes} />
       </div>
     </div>
   );
