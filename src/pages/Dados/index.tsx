@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { data } from '../Data/data';
 import styles from "./Dados.module.scss";
-import BarChat from '../components/BarChat'; // Import the BarChat component
+import BarChat from '../BarChat'; // Import the BarChat component
 
 interface Produto {
   data: string;
@@ -183,6 +183,7 @@ const DadosPage: React.FC = () => {
       </h2>
       <div className={styles.container}>
         <div className={styles.geral}>
+          <h2>Geral:</h2>
           <p>Quantidade Total de Produtos: {quantidadeTotal}</p>
           <div>
             {listaProdutosPorMes.map((item, index) => (
@@ -194,7 +195,7 @@ const DadosPage: React.FC = () => {
 
         {/* Métricas GPT */}
         <div className={styles.adicional}></div>
-        <h1>Métricas GPT:</h1>
+        <h2>Métricas GPT:</h2>
         <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em 25 dias</p>
         <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em 25 dias</p>
         <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
@@ -206,7 +207,7 @@ const DadosPage: React.FC = () => {
 
         {/* Gráfico de Barras */}
         <div className={styles.chart}>
-          <h2>Produtos Cadastrados por Mês</h2>
+          <h2>Estatística Gráfica:</h2>
           <BarChat listaProdutosPorMes={listaProdutosPorMes} />
         </div>
       </div>

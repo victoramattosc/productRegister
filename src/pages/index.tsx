@@ -3,6 +3,7 @@ import Produtos from "./Produtos";
 
 import styles from "./Home.module.scss";
 
+
 export function Home() {
 
   <link rel="icon" href="../assets/GM.png" />;
@@ -10,7 +11,7 @@ export function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.title}>
-        <span>Product Register</span>
+        <h1>Product Register</h1>
       </div>
 
       <div className={styles.content}>

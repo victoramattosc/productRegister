@@ -138,7 +138,7 @@ const Produtos = () => {
           }
           placeholderText="Selecione a data"
           dateFormat="dd/MM/yyyy"
-          className={styles.input}
+          className={styles.dataPicker}
         />
         <button onClick={adicionarAnotacao} className={styles.botao}>
           <FiPlusCircle color="#bc1b29" size={"20px"} />
