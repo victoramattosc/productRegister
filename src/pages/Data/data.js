@@ -302,4 +302,8 @@ export const data = [
     { produto: '65664 - Soquete Magnético Sextavado M10 x 65mm HTOM', data: '2024-08-01' },
     { produto: '65667 - Soquete Magnético Sextavado 1/2" x 65mm HTOM', data: '2024-08-01' },
     { produto: '65668 - Soquete Magnético Sextavado 7/16" x 65mm HTOM', data: '2024-08-01' },
+    { produto: '65600 - Broca Aço Rápido Para Metal 13,0 x 151mm HT Ferramentas', data: '2024-08-02' },
+    { produto: '65613 - Broca Aço Rápido Para Metal 14,0 x 160mm HT Ferramentas', data: '2024-08-02' },
+    { produto: '65625 - Broca Aço Rápido Para Metal 15,0 x 169mm HT Ferramentas', data: '2024-08-02' },
+    { produto: '65608 - Broca Aço Rápido Para Metal 17,0 x 184mm HT Ferramentas', data: '2024-08-02' },
 ];
