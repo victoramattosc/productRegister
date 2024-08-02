@@ -1,40 +1,41 @@
-.title{
+.title {
     border-bottom: 2px solid #eb1c3c;
     padding: 1.3%;
     color: #fff;
     font-size: large;
     text-align: center;
     margin-bottom: 10px;
-}
-
-.all{
+  }
+  
+  .all {
     padding: 30px;
-}
-
-.container{
+  }
+  
+  .container {
     display: flex;
     flex-direction: column;
     width: fit-content;
     height: fit-content;
     justify-content: space-between;
-    background-color: #FFF;//#cfeceb
+    background-color: #FFF; //#cfeceb
     border-radius: 15px;
     margin-bottom: 12px;
     margin-right: 6px;
     padding: 20px;
-}
-
-.geral{
+  }
+  
+  .geral {
     display: flex;
     flex-direction: column;
     margin-bottom: 12px;
-}
-
-.adicional {
+  }
+  
+  .adicional {
     margin-top: 20px;
   }
-
-.chart {
+  
+  .chart {
     width: 100%;
     margin-top: 40px;
   }
+  
