@@ -306,4 +306,7 @@ export const data = [
     { produto: '65613 - Broca Aço Rápido Para Metal 14,0 x 160mm HT Ferramentas', data: '2024-08-02' },
     { produto: '65625 - Broca Aço Rápido Para Metal 15,0 x 169mm HT Ferramentas', data: '2024-08-02' },
     { produto: '65608 - Broca Aço Rápido Para Metal 17,0 x 184mm HT Ferramentas', data: '2024-08-02' },
+    { produto: '65612 - Broca Aço Rápido Para Metal 19,0 x 198mm HT Ferramentas', data: '2024-08-02' },    
+    { produto: '65619 - Broca Aço Rápido Para Metal 3/4" x 205mm HT Ferramentas', data: '2024-08-02' },    
+    { produto: '65597 - Broca Aço Rápido Para Metal 13/16" x 210mm HT Ferramentas', data: '2024-08-02' },    
 ];
