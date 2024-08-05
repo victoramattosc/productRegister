@@ -309,4 +309,11 @@ export const data = [
     { produto: '65612 - Broca Aço Rápido Para Metal 19,0 x 198mm HT Ferramentas', data: '2024-08-02' },    
     { produto: '65619 - Broca Aço Rápido Para Metal 3/4" x 205mm HT Ferramentas', data: '2024-08-02' },    
     { produto: '65597 - Broca Aço Rápido Para Metal 13/16" x 210mm HT Ferramentas', data: '2024-08-02' },    
+    { produto: '65653 - Paquímetro Universal Analógico 150mm HTOM', data: '2024-08-05' },    
+    { produto: '65586 - Serra Copo Diamantada Porcelanato Cerâmica Vidro 4mm HTOM', data: '2024-08-05' },    
+    { produto: '65661 - Macho Para Tubo Aço Rápido NPT 1/8 x 27 HTOM', data: '2024-08-05' },    
+    { produto: '65663 - Macho Para Tubo Aço Rápido NPT 1/4 x 18 HTOM', data: '2024-08-05' },    
+    { produto: '65662 - Macho Para Tubo Aço Rápido NPT 3/8 x 18 HTOM', data: '2024-08-05' },    
+    { produto: '65659 - Macho Para Tubo Aço Rápido NPT 1/2 x 14 HTOM', data: '2024-08-05' },    
+    { produto: '65660 - Macho Para Tubo Aço Rápido NPT 3/4 x 14 HTOM', data: '2024-08-05' },    
 ];
