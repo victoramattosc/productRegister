@@ -316,4 +316,6 @@ export const data = [
     { produto: '65662 - Macho Para Tubo Aço Rápido NPT 3/8 x 18 HTOM', data: '2024-08-05' },    
     { produto: '65659 - Macho Para Tubo Aço Rápido NPT 1/2 x 14 HTOM', data: '2024-08-05' },    
     { produto: '65660 - Macho Para Tubo Aço Rápido NPT 3/4 x 14 HTOM', data: '2024-08-05' },    
+    { produto: '65823 - Mini Serra Sabre M12 Com Carregador e Bateria Milwaukee', data: '2024-08-06' },    
+    { produto: '65824 - Motosserra 6" M12 Fuel Com Carregador e Bateria Milwaukee', data: '2024-08-06' },    
 ];
