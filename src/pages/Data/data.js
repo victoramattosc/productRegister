@@ -318,6 +318,6 @@ export const data = [
     { produto: '65660 - Macho Para Tubo Aço Rápido NPT 3/4 x 14 HTOM', data: '2024-08-05' },    
     { produto: '65823 - Mini Serra Sabre M12 Com Carregador e Bateria Milwaukee', data: '2024-08-06' },    
     { produto: '65824 - Motosserra 6" M12 Fuel Com Carregador e Bateria Milwaukee', data: '2024-08-06' },    
-    { produto: '65583 - Broca Para Vidro 10mm HTOM', data: '2024-08-06' },    
-    { produto: '65671 - Riscador Para Pisos e Azulejos 145mm HTOM', data: '2024-08-06' },    
+    { produto: '65583 - Broca Para Vidro 10mm HTOM', data: '2024-08-07' },    
+    { produto: '65671 - Riscador Para Pisos e Azulejos 145mm HTOM', data: '2024-08-07' },    
 ];
