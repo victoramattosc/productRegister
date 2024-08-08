@@ -320,4 +320,9 @@ export const data = [
     { produto: '65824 - Motosserra 6" M12 Fuel Com Carregador e Bateria Milwaukee', data: '2024-08-06' },    
     { produto: '65583 - Broca Para Vidro 10mm HTOM', data: '2024-08-07' },    
     { produto: '65671 - Riscador Para Pisos e Azulejos 145mm HTOM', data: '2024-08-07' },    
+    { produto: '65634 - Fresa Para Tupia Reta 1/4" HTOM', data: '2024-08-08' },    
+    { produto: '65633 - Fresa Para Tupia Reta 1/2" HTOM', data: '2024-08-08' },    
+    { produto: '65635 - Fresa Para Tupia Reta 5/8" HTOM', data: '2024-08-08' },    
+    { produto: '65672 - Broca Piloto 1/4" x 104mm HT Ferramentas', data: '2024-08-08' },    
+    { produto: '65827 - Chave Impacto 1/2" M18 Fuel Carregador e Bateria Milwaukee', data: '2024-08-08' },    
 ];
