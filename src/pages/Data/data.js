@@ -325,4 +325,7 @@ export const data = [
     { produto: '65635 - Fresa Para Tupia Reta 5/8" HTOM', data: '2024-08-08' },    
     { produto: '65672 - Broca Piloto 1/4" x 104mm HT Ferramentas', data: '2024-08-08' },    
     { produto: '65827 - Chave Impacto 1/2" M18 Fuel Carregador e Bateria Milwaukee', data: '2024-08-08' },    
+    { produto: '65822 - Chave Impacto 1/2" M12 Fuel Carregador e Baterias Milwaukee', data: '2024-08-09' },    
+    { produto: '22954 - Kit de Pontas Big Bit 25 Peças Bosch', data: '2024-08-09' },    
+    { produto: '65821 - Parafusadeira Furadeira Impacto M12 3/8" Milwaukee', data: '2024-08-09' },    
 ];
