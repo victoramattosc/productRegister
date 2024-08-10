@@ -328,4 +328,5 @@ export const data = [
     { produto: '65822 - Chave Impacto 1/2" M12 Fuel Carregador e Baterias Milwaukee', data: '2024-08-09' },    
     { produto: '22954 - Kit de Pontas Big Bit 25 Peças Bosch', data: '2024-08-09' },    
     { produto: '65821 - Parafusadeira Furadeira Impacto M12 3/8" Milwaukee', data: '2024-08-09' },    
+    { produto: '65820 - Esmerilhadeira 4.1/2" 1250W 220V Milwaukee', data: '2024-08-10' },    
 ];
