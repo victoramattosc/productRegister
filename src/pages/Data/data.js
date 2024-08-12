@@ -329,4 +329,6 @@ export const data = [
     { produto: '22954 - Kit de Pontas Big Bit 25 Peças Bosch', data: '2024-08-09' },    
     { produto: '65821 - Parafusadeira Furadeira Impacto M12 3/8" Milwaukee', data: '2024-08-09' },    
     { produto: '65820 - Esmerilhadeira 4.1/2" 1250W 220V Milwaukee', data: '2024-08-10' },    
+    { produto: 'KIT-65815-5UN - Jogo de Bits Phillips PH2 x 50mm Shockwave 5 Peças Milwaukee', data: '2024-08-10' },    
+    { produto: '65861 - Bateria M18 Redlithium XC5.0 Milwaukee', data: '2024-08-10' },    
 ];
