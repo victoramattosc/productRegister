@@ -331,4 +331,11 @@ export const data = [
     { produto: '65820 - Esmerilhadeira 4.1/2" 1250W 220V Milwaukee', data: '2024-08-10' },    
     { produto: 'KIT-65815-5UN - Jogo de Bits Phillips PH2 x 50mm Shockwave 5 Peças Milwaukee', data: '2024-08-10' },    
     { produto: '65861 - Bateria M18 Redlithium XC5.0 Milwaukee', data: '2024-08-10' },    
+    { produto: '65818 - Caneta Marcador Ponta Fina Preta Inkzall Milwaukee', data: '2024-08-13' },
+    { produto: '65825 - Caneta Marcador Ponta Fina Vermelha Inkzall Milwaukee', data: '2024-08-13' },
+    { produto: 'KIT-65825-3UN - Kit Caneta Marcador Vermelha Inkzall 3 Unid. Milwaukee', data: '2024-08-13' },
+    { produto: 'KIT-65825-5UN - Kit Caneta Marcador Vermelha Inkzall 5 Unid. Milwaukee', data: '2024-08-13' },
+    { produto: 'KIT-65825-10UN - Kit Caneta Marcador Vermelha Inkzall 10 Unid. Milwaukee', data: '2024-08-13' },
+    { produto: 'KIT-65818-3UN - Kit Caneta Marcador Preta Inkzall 3 Unid. Milwaukee', data: '2024-08-13' },
+    { produto: 'KIT-65818-5UN - Kit Caneta Marcador Preta Inkzall 5 Unid. Milwaukee', data: '2024-08-13' },
 ];
