@@ -338,4 +338,7 @@ export const data = [
     { produto: 'KIT-65825-10UN - Kit Caneta Marcador Vermelha Inkzall 10 Unid. Milwaukee', data: '2024-08-13' },
     { produto: 'KIT-65818-3UN - Kit Caneta Marcador Preta Inkzall 3 Unid. Milwaukee', data: '2024-08-13' },
     { produto: 'KIT-65818-5UN - Kit Caneta Marcador Preta Inkzall 5 Unid. Milwaukee', data: '2024-08-13' },
+    { produto: 'KIT-65818-10UN - Kit Caneta Marcador Preta Inkzall 10 Unid. Milwaukee', data: '2024-08-14' },
+    { produto: '65866 - Suporte Disco Diamantado M14 x 100mm Cortag', data: '2024-08-14' },
+    { produto: '65866 - Pá Plástica com Cabo de Madeira 79cm Tramontina', data: '2024-08-14' },
 ];
