@@ -345,4 +345,7 @@ export const data = [
     { produto: '41418 - Base Magnética para Relógios Comparadores Zaas Precision', data: '2024-08-16' },
     { produto: '65576 - Bico Maçarico Nº3 Calheiro Max Chamas', data: '2024-08-16' },
     { produto: '65575 - Maçarico Manteiro P-13 Max Chamas', data: '2024-08-16' },
+    { produto: '65807 - Massa Corrida Interior 1,5kg Qualyvinil', data: '2024-08-19' },
+    { produto: '65809 - Protetor Fundo Zarcão Laranja 3,6L Qualyvinil', data: '2024-08-19' },
+    { produto: '65755 - Resina Acrílica Protetora Base Água Incolor 3,6L Qualyvinil', data: '2024-08-19' },
 ];
