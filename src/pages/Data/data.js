@@ -351,4 +351,6 @@ export const data = [
     { produto: '65810 - Esmalte Colorit Premium Grafite Escuro 3,6L Qualyvinil', data: '2024-08-20' },
     { produto: '65808 - Massa Corrida PVA Interior Klasse 6kg Qualyvinil', data: '2024-08-20' },
     { produto: '64380 - Trena Laser GLM 25-23 25m Bosch', data: '2024-08-20' },
+    { produto: '64397 - Jogo de Estilete 3 Peças MTX', data: '2024-08-21' },
+    { produto: '41484 - Trena Curta Fine 5m x 19mm MTX', data: '2024-08-21' },
 ];
