@@ -353,4 +353,11 @@ export const data = [
     { produto: '64380 - Trena Laser GLM 25-23 25m Bosch', data: '2024-08-20' },
     { produto: '64397 - Jogo de Estilete 3 Peças MTX', data: '2024-08-21' },
     { produto: '41484 - Trena Curta Fine 5m x 19mm MTX', data: '2024-08-21' },
+    { produto: '38927 - Bolsa para Ferramentas em Lona 18 Bolsos MTX', data: '2024-08-22' },
+    { produto: '64395 - Kit para Churrasco 5 Peças Palisad', data: '2024-08-22' },
+    { produto: '30432 - Pulverizador Manual 1,25L Palisad', data: '2024-08-22' },
+    { produto: '64396 - Pazinha Estreita Revestida 260mm Palisad', data: '2024-08-22' },
+    { produto: '30727 - Ancinho Rastelo 5 Dentes Revestido 110 x 280mm Palisad', data: '2024-08-23' },
+    { produto: '38638 - Jogo de Chave Allen Curta 10 Peças Sparta', data: '2024-08-23' },
+    { produto: '64393 - Jogo de Ferramentas 6 Peças Sparta', data: '2024-08-24' },
 ];
