@@ -360,4 +360,11 @@ export const data = [
     { produto: '30727 - Ancinho Rastelo 5 Dentes Revestido 110 x 280mm Palisad', data: '2024-08-23' },
     { produto: '38638 - Jogo de Chave Allen Curta 10 Peças Sparta', data: '2024-08-23' },
     { produto: '64393 - Jogo de Ferramentas 6 Peças Sparta', data: '2024-08-24' },
+    { produto: '64394 - Chave Teste 180mm 100 - 500V Sparta', data: '2024-08-26' },
+    { produto: '65884 - Broca Para Porcelanato EXPERT HEX-9 6x90mm Bosch', data: '2024-08-27' },
+    { produto: '65885 - Broca Para Porcelanato EXPERT HEX-9 8x90mm Bosch', data: '2024-08-27' },
+    { produto: '65886 - Broca Para Porcelanato EXPERT HEX-9 10x90mm Bosch', data: '2024-08-27' },
+    { produto: '60210 - Tira Grude Desengraxante Multiuso 500ml Quimatic', data: '2024-08-27' },
+    { produto: '65995 - Suporte para Disco de Lixa com Velcro M14 x 100mm Hessen', data: '2024-08-28' },
+
 ];
