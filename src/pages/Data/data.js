@@ -366,5 +366,12 @@ export const data = [
     { produto: '65886 - Broca Para Porcelanato EXPERT HEX-9 10x90mm Bosch', data: '2024-08-27' },
     { produto: '60210 - Tira Grude Desengraxante Multiuso 500ml Quimatic', data: '2024-08-27' },
     { produto: '65995 - Suporte para Disco de Lixa com Velcro M14 x 100mm Hessen', data: '2024-08-28' },
-
+    { produto: '66002 - Disco Lixa Velcro Teto e Parede Grão 100 225mm Hessen', data: '2024-08-29' },
+    { produto: '14014 - Disco Lixa Velcro Teto e Parede Grão 180 225mm Hessen', data: '2024-08-29' },
+    { produto: '14014 - Disco Lixa Velcro Teto e Parede Grão 180 225mm Hessen', data: '2024-08-29' },
+    { produto: 'KIT-66002-5UN - Kit Disco Lixa Velcro Teto/Parede Grão 100 225mm 5pçs Hessen', data: '2024-08-29' },
+    { produto: 'KIT-14014-5UN - Kit Disco Lixa Velcro Teto/Parede Grão 180 225mm 5pçs Hessen', data: '2024-08-29' },
+    { produto: '65993 - Disco Abrasivo Telado Velcro Grao 180 225mm Hessen', data: '2024-08-30' },
+    { produto: 'KIT-65993-5UN - Kit Disco Abrasivo Telado Velcro Grao 180 225mm 5 Pçs Hessen', data: '2024-08-30' },
+    { produto: '66005 - Nível Magnético de Alumínio Profissional 80cm Ingco', data: '2024-08-30' },
 ];
