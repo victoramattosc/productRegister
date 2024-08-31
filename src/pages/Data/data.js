@@ -374,4 +374,6 @@ export const data = [
     { produto: '65993 - Disco Abrasivo Telado Velcro Grao 180 225mm Hessen', data: '2024-08-30' },
     { produto: 'KIT-65993-5UN - Kit Disco Abrasivo Telado Velcro Grao 180 225mm 5 Pçs Hessen', data: '2024-08-30' },
     { produto: '66005 - Nível Magnético de Alumínio Profissional 80cm Ingco', data: '2024-08-30' },
+    { produto: '65994 - Disco Diamantado Segmentado Ecco 110mm Hessen', data: '2024-08-31' },
+    { produto: '13811 - Disco Diamantado Segmentado 180mm Hessen', data: '2024-08-31' },
 ];
