@@ -376,6 +376,7 @@ export const data = [
     { produto: '66005 - Nível Magnético de Alumínio Profissional 80cm Ingco', data: '2024-08-30' },
     { produto: '65994 - Disco Diamantado Segmentado Ecco 110mm Hessen', data: '2024-08-31' },
     { produto: '13811 - Disco Diamantado Segmentado 180mm Hessen', data: '2024-08-31' },
+    { produto: '25128 - Esmerilhadeira Angular 9"  2200W 220V Makita GA9020', data: '2024-09-01' },
     { produto: '8605 - Piso Moeda Emborrachado Preto 50cm x 50cm x 3mm Celpan', data: '2024-09-01' },
     { produto: '65864 - Lençol Piso Moeda Laminado Preto 1,20m x 2,0m Ibirá', data: '2024-09-01' },
     { produto: '66016 - Ventilador Teto Elluz Tabaco/Cinza Inverter Bivolt Ventisol', data: '2024-09-01' },
