@@ -1,7 +1,6 @@
 // DadosPage.tsx
 import React, { useEffect, useState } from 'react';
-import { data as dataVictor } from '../Data/dataVictor';
-import { data as dataCarlos } from '../Data/dataCarlos';
+import { useDataContext } from '../context/DataContext'; // Importa o contexto
 import styles from "./Dados.module.scss";
 import BarChat from '../BarChat'; // Importa o componente de gráfico
 
@@ -11,8 +10,7 @@ interface Produto {
 }
 
 const DadosPage: React.FC = () => {
-  const [cadastrador, setCadastrador] = useState<string>('Victor'); // Estado para armazenar o cadastrador selecionado
-  const [dados, setDados] = useState<Produto[]>([]); // Estado para armazenar os dados dinâmicos
+  const { cadastrador, dados, setCadastrador } = useDataContext(); // Usa o contexto para acessar cadastrador e dados
   const [quantidadeTotal, setQuantidadeTotal] = useState<number>(0);
   const [quantidadeAntes, setQuantidadeAntes] = useState<number>(0);
   const [quantidadeDepois, setQuantidadeDepois] = useState<number>(0);
@@ -25,78 +23,58 @@ const DadosPage: React.FC = () => {
   const [listaProdutosPorMes, setListaProdutosPorMes] = useState<{ mes: string, quantidade: number }[]>([]);
   const [mediaMensal, setMediaMensal] = useState<number>(0);
 
-  // Atualiza os dados com base no cadastrador selecionado
-  useEffect(() => {
-    if (cadastrador === 'Victor') {
-      setDados(dataVictor);
-    } else {
-      setDados(dataCarlos);
-    }
-  }, [cadastrador]);
+  // Funções utilitárias para formatar e calcular dados
+  const adicionarDias = (dataISO: string, dias: number) => {
+    const date = new Date(dataISO);
+    date.setDate(date.getDate() + dias);
+    const ano = date.getFullYear();
+    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const dia = String(date.getDate()).padStart(2, '0');
+    return `${ano}-${mes}-${dia}`;
+  };
+
+  const calcularMedia = (produtosPorDia: { [data: string]: number }, datasFiltradas: string[]) => {
+    if (datasFiltradas.length === 0) return 0;
+    const totalProdutos = datasFiltradas.reduce((total, data) => total + produtosPorDia[data], 0);
+    return totalProdutos / datasFiltradas.length;
+  };
+
+  const calcularPorcentagemAumento = (valorAntigo: number, valorNovo: number) => {
+    if (valorAntigo === 0) return 0;
+    const diferenca = valorNovo - valorAntigo;
+    return (diferenca / valorAntigo) * 100;
+  };
+
+  const calcularProdutosPorMes = (produtosComDatas: Produto[]) => {
+    const produtosPorMes: { [mes: string]: number } = {};
+    produtosComDatas.forEach(item => {
+      const [ano, mes] = item.data.split('-');
+      const chaveMes = `${ano}-${mes}`;
+      produtosPorMes[chaveMes] = (produtosPorMes[chaveMes] || 0) + 1;
+    });
+    return produtosPorMes;
+  };
+
+  const calcularMediaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
+    const totalMeses = Object.keys(produtosPorMes).length;
+    const totalProdutos = Object.values(produtosPorMes).reduce((total, quantidade) => total + quantidade, 0);
+    return totalProdutos / totalMeses;
+  };
+
+  const obterNomeMes = (dataISO: string) => {
+    const [ano, mes] = dataISO.split('-');
+    const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    return `${meses[parseInt(mes) - 1]} de ${ano}`;
+  };
+
+  const calcularListaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
+    return Object.entries(produtosPorMes).map(
+      ([mes, quantidade]) => ({ mes: obterNomeMes(mes), quantidade })
+    );
+  };
 
   // Executa os cálculos quando os dados ou cadastrador são alterados
   useEffect(() => {
-    const formatarData = (dataISO: string) => {
-      const [ano, mes, dia] = dataISO.split('-');
-      return `${dia}/${mes}/${ano.slice(2)}`;
-    };
-
-    const calcularDiferencaDias = (dataInicio: string, dataFim: string) => {
-      const inicio = new Date(dataInicio);
-      const fim = new Date(dataFim);
-      const diferencaMilissegundos = fim.getTime() - inicio.getTime();
-      return Math.floor(diferencaMilissegundos / (1000 * 60 * 60 * 24));
-    };
-
-    const calcularMedia = (produtosPorDia: { [data: string]: number }, datasFiltradas: string[]) => {
-      if (datasFiltradas.length === 0) return 0;
-      const totalProdutos = datasFiltradas.reduce((total, data) => total + produtosPorDia[data], 0);
-      return totalProdutos / datasFiltradas.length;
-    };
-
-    const calcularPorcentagemAumento = (valorAntigo: number, valorNovo: number) => {
-      if (valorAntigo === 0) return 0;
-      const diferenca = valorNovo - valorAntigo;
-      return (diferenca / valorAntigo) * 100;
-    };
-
-    const calcularProdutosPorMes = (produtosComDatas: Produto[]) => {
-      const produtosPorMes: { [mes: string]: number } = {};
-      produtosComDatas.forEach(item => {
-        const [ano, mes] = item.data.split('-');
-        const chaveMes = `${ano}-${mes}`;
-        produtosPorMes[chaveMes] = (produtosPorMes[chaveMes] || 0) + 1;
-      });
-      return produtosPorMes;
-    };
-
-    const calcularMediaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
-      const totalMeses = Object.keys(produtosPorMes).length;
-      const totalProdutos = Object.values(produtosPorMes).reduce((total, quantidade) => total + quantidade, 0);
-      return totalProdutos / totalMeses;
-    };
-
-    const obterNomeMes = (dataISO: string) => {
-      const [ano, mes] = dataISO.split('-');
-      const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-      return `${meses[parseInt(mes) - 1]} de ${ano}`;
-    };
-
-    const calcularListaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
-      return Object.entries(produtosPorMes).map(
-        ([mes, quantidade]) => ({ mes: obterNomeMes(mes), quantidade })
-      );
-    };
-
-    const adicionarDias = (dataISO: string, dias: number) => {
-      const date = new Date(dataISO);
-      date.setDate(date.getDate() + dias);
-      const ano = date.getFullYear();
-      const mes = String(date.getMonth() + 1).padStart(2, '0');
-      const dia = String(date.getDate()).padStart(2, '0');
-      return `${ano}-${mes}-${dia}`;
-    };
-
     if (dados.length === 0) return;
 
     const produtosComDatas: Produto[] = dados.map((item: { data: string, produto: string }) => ({
@@ -115,7 +93,8 @@ const DadosPage: React.FC = () => {
 
     const produtosPorDia: { [data: string]: number } = {};
     produtosComDatas.forEach(item => {
-      produtosPorDia[item.data] = (produtosPorDia[item.data] || 0) + 1;
+      const dataItem = item.data;
+      produtosPorDia[dataItem] = (produtosPorDia[dataItem] || 0) + 1;
     });
 
     const mediaAntes = calcularMedia(produtosPorDia, datasAntes);

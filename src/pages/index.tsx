@@ -9,6 +9,7 @@ export function Home() {
   <link rel="icon" href="../assets/GM.png" />;
 
   return (
+    <DataProvider>
     <main className={styles.main}>
       <div className={styles.title}>
         <h1>Product Register</h1>
@@ -29,6 +30,7 @@ export function Home() {
         </div>
       </div>
     </main>
+    </DataProvider>
 
   );
 }
