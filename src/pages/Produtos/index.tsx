@@ -3,7 +3,7 @@ import styles from "./Anotacoes.module.scss";
 import { FiTrash2, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { data } from "../Data/data";
+import { data } from "../Data/dataVictor";
 
 type Anotacao = {
   produto: string;

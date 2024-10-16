@@ -442,4 +442,10 @@ export const data = [
     { produto: '66171 - Betumadeira Aço Temperado Lisa 10cm Cabo Preto Galo', data: '2024-10-09' },       
     { produto: '66172 - Betumadeira Aço Temperado Lisa 12,2cm Cabo Preto Galo', data: '2024-10-09' },       
     { produto: '66246 - Pistola Pintura para Tanque de Pressao PTV200 2,0mm Vonder', data: '2024-10-09' },       
+    { produto: '40862 - Desempenadeira Dentada Aço Temperado 12x40,5cm Galo', data: '2024-10-16' },       
+    { produto: '66161 - Desempenadeira Dentada Aço Temperado 12x40cm Galo', data: '2024-10-16' },       
+    { produto: '66158 - Desempenadeira Aco Temperado Dentada 12x29cm Galo', data: '2024-10-16' },       
+    { produto: '66199 - Desempenadeira Poliestireno Lisa 8x16cm Galo', data: '2024-10-16' },       
+    { produto: '66193 - Desempenadeira Poliestireno Corrugada Azul 15x26cm Galo', data: '2024-10-16' },       
+    { produto: '66195 - Desempenadeira Poliestireno Corrugada Azul 18x30cm Galo', data: '2024-10-16' },       
 ];
