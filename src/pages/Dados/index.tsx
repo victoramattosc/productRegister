@@ -34,6 +34,7 @@ const DadosPage: React.FC = () => {
     }
   }, [cadastrador]);
 
+  // Executa os cálculos quando os dados ou cadastrador são alterados
   useEffect(() => {
     const formatarData = (dataISO: string) => {
       const [ano, mes, dia] = dataISO.split('-');
@@ -153,7 +154,7 @@ const DadosPage: React.FC = () => {
     const mediaProdutosPorMes = calcularMediaProdutosPorMes(produtosPorMes);
     setMediaMensal(mediaProdutosPorMes);
 
-  }, [dados]);
+  }, [dados]); // O useEffect agora depende de `dados`
 
   return (
     <div className={styles.all}>
