@@ -1,5 +1,6 @@
-import Dados from "./Dados";
-import Produtos from "./Produtos";
+import { DataProvider } from './context/DataContext';
+import Dados from './components/DadosPage';
+import Produtos from './components/Produtos';
 
 import styles from "./Home.module.scss";
 
