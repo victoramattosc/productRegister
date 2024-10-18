@@ -448,4 +448,12 @@ export const data = [
     { produto: '66199 - Desempenadeira Poliestireno Lisa 8x16cm Galo', data: '2024-10-16' },       
     { produto: '66193 - Desempenadeira Poliestireno Corrugada Azul 15x26cm Galo', data: '2024-10-16' },       
     { produto: '66195 - Desempenadeira Poliestireno Corrugada Azul 18x30cm Galo', data: '2024-10-16' },       
+    { produto: '66197 - Desempenadeira Poliestireno Corrugada Azul 22x34cm Galo', data: '2024-10-18' },       
+    { produto: '66190 - Desempenadeira Poliestireno Lisa Azul 15x26cm Galo', data: '2024-10-18' },       
+    { produto: '66191 - Desempenadeira Poliestireno Lisa Azul 18x30cm Galo', data: '2024-10-18' },       
+    { produto: '66192 - Desempenadeira Poliestireno Lisa Azul 22x34cm Galo', data: '2024-10-18' },       
+    { produto: '66194 - Desempenadeira Poliestireno com Borracha Azul 15x26cm Galo', data: '2024-10-18' },       
+    { produto: '66196 - Desempenadeira Poliestireno com Borracha Azul 18x30cm Galo', data: '2024-10-18' },       
+    { produto: '66149 - Desempenadeira Aço Inox Galox 15cm Galo', data: '2024-10-18' },       
+    { produto: '66150 - Desempenadeira Aço Inox Galox 25cm Galo', data: '2024-10-18' },       
 ];
