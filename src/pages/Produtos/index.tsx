@@ -1,5 +1,5 @@
 // /src/pages/Produtos/index.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Produtos.module.scss";
 import { FiTrash2, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import DatePicker from "react-datepicker";
@@ -16,13 +16,17 @@ interface ProdutosProps {
 }
 
 const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
-  const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2; 
-  const [anotacoes, setAnotacoes] = useState<Anotacao[]>(data);
+  const [anotacoes, setAnotacoes] = useState<Anotacao[]>([]);
   const [novaAnotacao, setNovaAnotacao] = useState<{ produto: string; data: Date }>({
     produto: "",
     data: new Date(),
   });
   const [mostrarTodos, setMostrarTodos] = useState(false);
+
+  useEffect(() => {
+    const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2;
+    setAnotacoes(data);
+  }, [cadastrador]);
 
   const adicionarAnotacao = () => {
     if (novaAnotacao.produto.trim() !== "") {
@@ -36,9 +40,15 @@ const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
   };
 
   const removerAnotacao = (index: number) => {
-    const novasAnotacoes = [...anotacoes];
-    novasAnotacoes.splice(index, 1);
-    setAnotacoes(novasAnotacoes);
+    if (mostrarTodos) {
+      const novasAnotacoes = [...anotacoes];
+      novasAnotacoes.splice(index, 1);
+      setAnotacoes(novasAnotacoes);
+    } else {
+      const indiceReal = anotacoes.length - 5 + index;
+      const novasAnotacoes = anotacoes.filter((_, i) => i !== indiceReal);
+      setAnotacoes(novasAnotacoes);
+    }
   };
 
   const formatarData = (dataISO: string) => {
@@ -78,26 +88,48 @@ const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
       </button>
 
       <div className={styles.container}>
-        <ul className={styles.anotacaoList}>
-          {anotacoes.slice(-5).map((anotacao, index) => (
-            <li key={index} className={styles.anotacao}>
-              {`${anotacao.produto} - ${formatarData(anotacao.data)}`}
-              <button
-                onClick={() => removerAnotacao(index)}
-                className={styles.botaotrash}
-              >
-                <FiTrash2 color="red" />
-              </button>
-            </li>
-          ))}
-        </ul>
-        <ul className={styles.anotacaoList}>
-          {listaQuantidadesPorDia.slice(-6).map((item, index) => (
-            <li key={index} className={styles.anotacao}>
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.listContainer}>
+          <ul className={styles.anotacaoList}>
+            {mostrarTodos
+              ? anotacoes.map((anotacao, index) => (
+                  <li key={index} className={styles.anotacao}>
+                    {`${anotacao.produto} - ${formatarData(anotacao.data)}`}
+                    <button
+                      onClick={() => removerAnotacao(index)}
+                      className={styles.botaotrash}
+                    >
+                      <FiTrash2 color="red" />
+                    </button>
+                  </li>
+                ))
+              : anotacoes.slice(-5).map((anotacao, index) => (
+                  <li key={index} className={styles.anotacao}>
+                    {`${anotacao.produto} - ${formatarData(anotacao.data)}`}
+                    <button
+                      onClick={() => removerAnotacao(index)}
+                      className={styles.botaotrash}
+                    >
+                      <FiTrash2 color="red" />
+                    </button>
+                  </li>
+                ))}
+          </ul>
+        </div>
+        <div className={styles.listContainer}>
+          <ul className={styles.anotacaoList}>
+            {mostrarTodos
+              ? listaQuantidadesPorDia.map((item, index) => (
+                  <li key={index} className={styles.anotacao}>
+                    {item}
+                  </li>
+                ))
+              : listaQuantidadesPorDia.slice(-6).map((item, index) => (
+                  <li key={index} className={styles.anotacao}>
+                    {item}
+                  </li>
+                ))}
+          </ul>
+        </div>
       </div>
       <div className={styles.inputdiv}>
         <input
@@ -114,6 +146,7 @@ const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
           onChange={(date) =>
             date && setNovaAnotacao({ ...novaAnotacao, data: date })
           }
+          placeholderText="Selecione a data"
           dateFormat="dd/MM/yyyy"
           className={styles.dataPicker}
         />
