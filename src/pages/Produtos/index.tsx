@@ -1,16 +1,23 @@
-import React, { useState } from "react";
-import styles from "./Anotacoes.module.scss";
+import styles from "./Produtos.module.scss";
 import { FiTrash2, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { data } from "../Data/data";
+import { dataCadastrador1, dataCadastrador2 } from "../Data/data"; // Importação de dados de dois cadastradores
 
 type Anotacao = {
   produto: string;
   data: string;
 };
 
-const Produtos = () => {
+interface ProdutosProps {
+  cadastrador: string; // Recebe qual cadastrador está ativo
+}
+interface ProdutosProps {
+  cadastrador: string; // Recebe qual cadastrador está ativo
+}
+
+const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
+  const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2; // Dados do cadastrador ativo
   const [anotacoes, setAnotacoes] = useState<Anotacao[]>(data);
   const [novaAnotacao, setNovaAnotacao] = useState<{ produto: string; data: Date }>({
     produto: "",

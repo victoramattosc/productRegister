@@ -1,4 +1,4 @@
-export const data = [
+export const dataCadastrador1 = [
     { produto: '64269 - Assento Sanitário Almofadado Cinza Plastilit', data: '2024-05-09' },
     { produto: '42846 - Assento Sanitário Soft Branco Plastili', data: '2024-05-09' },
     { produto: '64879 - Adesivo Multiuso PU 40 Branco 80g Unipega', data: '2024-05-10' },
@@ -457,3 +457,5 @@ export const data = [
     { produto: '66149 - Desempenadeira Aço Inox Galox 15cm Galo', data: '2024-10-18' },       
     { produto: '66150 - Desempenadeira Aço Inox Galox 25cm Galo', data: '2024-10-18' },       
 ];
+
+export const dataCadastrador2 = [];
