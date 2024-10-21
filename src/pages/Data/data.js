@@ -456,12 +456,6 @@ export const dataCadastrador1 = [
     { produto: '66196 - Desempenadeira Poliestireno com Borracha Azul 18x30cm Galo', data: '2024-10-18' },       
     { produto: '66149 - Desempenadeira Aço Inox Galox 15cm Galo', data: '2024-10-18' },       
     { produto: '66150 - Desempenadeira Aço Inox Galox 25cm Galo', data: '2024-10-18' },       
-    { produto: '66152 - Desempenadeira Aço Inox Galox 40cm Galo', data: '2024-10-21' },       
-    { produto: '66153 - Desempenadeira Aço Inox Galox 60cm Galo', data: '2024-10-21' },       
-    { produto: '66200 - Desempenadeira Poliestireno para Grafiato 15x26cm Galo', data: '2024-10-21' },       
-    { produto: '66201 - Desempenadeira Poliestireno para Grafiato 18x30cm Galo', data: '2024-10-21' },       
-    { produto: '66178 - Desempenadeira Aço Zincado Lisa 12x29cm Galo', data: '2024-10-21' },       
-    { produto: '66188 - Desempenadeira Aço Zincado Lisa 12x40cm Galo', data: '2024-10-21' },       
 ];
 
 export const dataCadastrador2 = [];

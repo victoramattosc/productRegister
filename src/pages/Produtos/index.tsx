@@ -1,32 +1,22 @@
-// /src/pages/Produtos/index.tsx
-import React, { useState, useEffect } from "react";
-import styles from "./Produtos.module.scss";
+import React, { useState } from "react";
+import styles from "./Anotacoes.module.scss";
 import { FiTrash2, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { dataCadastrador1, dataCadastrador2 } from "../Data/data"; 
+import { data } from "../Data/data";
 
 type Anotacao = {
   produto: string;
   data: string;
 };
 
-interface ProdutosProps {
-  cadastrador: string;
-}
-
-const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
-  const [anotacoes, setAnotacoes] = useState<Anotacao[]>([]);
+const Produtos = () => {
+  const [anotacoes, setAnotacoes] = useState<Anotacao[]>(data);
   const [novaAnotacao, setNovaAnotacao] = useState<{ produto: string; data: Date }>({
     produto: "",
     data: new Date(),
   });
   const [mostrarTodos, setMostrarTodos] = useState(false);
-
-  useEffect(() => {
-    const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2;
-    setAnotacoes(data);
-  }, [cadastrador]);
 
   const adicionarAnotacao = () => {
     if (novaAnotacao.produto.trim() !== "") {

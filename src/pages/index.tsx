@@ -1,41 +1,34 @@
-// /src/pages/Home.tsx
-import React, { useState } from 'react';
 import Dados from "./Dados";
 import Produtos from "./Produtos";
+
 import styles from "./Home.module.scss";
 
-export function Home() {
-  const [cadastradorAtivo, setCadastradorAtivo] = useState<string>('Cadastrador1');
 
-  const handleTrocaCadastrador = (novoCadastrador: string) => {
-    setCadastradorAtivo(novoCadastrador);
-  };
+export function Home() {
+
+  <link rel="icon" href="../assets/GM.png" />;
 
   return (
     <main className={styles.main}>
       <div className={styles.title}>
-        <h1>Product Register - {cadastradorAtivo}</h1>
-      </div>
-
-      {/* Botões para trocar de cadastrador */}
-      <div className={styles.cadastradorButtons}>
-        <button onClick={() => handleTrocaCadastrador('Cadastrador1')}>Cadastrador 1</button>
-        <button onClick={() => handleTrocaCadastrador('Cadastrador2')}>Cadastrador 2</button>
+        <h1>Product Register</h1>
       </div>
 
       <div className={styles.content}>
         <div className={styles.group}>
-          {/* Exibe os produtos do cadastrador ativo */}
+
+          {/* Lado dos Produtos */}
           <div className={styles.anotacoes}>
-            <Produtos cadastrador={cadastradorAtivo} />
+            <Produtos />
           </div>
 
-          {/* Exibe os dados do cadastrador ativo */}
+          {/* Lado dos Dados */}
           <div className={styles.dados}>
-            <Dados cadastrador={cadastradorAtivo} />
+            <Dados />
           </div>
         </div>
       </div>
     </main>
+
   );
 }

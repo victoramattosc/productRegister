@@ -1,6 +1,5 @@
-// /src/pages/Dados/index.tsx
 import React, { useEffect, useState } from 'react';
-import { dataCadastrador1, dataCadastrador2 } from '../Data/data'; // Importando os dados corretos
+import { data } from '../Data/data';
 import styles from "./Dados.module.scss";
 import BarChat from '../BarChat'; // Import the BarChat component
 
@@ -101,8 +100,10 @@ const DadosPage: React.FC = () => {
       return `${ano}-${mes}-${dia}`;
     };
 
-    // Combina os dados de ambos os cadastradores
-    const produtosComDatas: Produto[] = [...dataCadastrador1, ...dataCadastrador2];
+    const produtosComDatas: Produto[] = data.map((item: { data: string, produto: string }) => ({
+      data: item.data,
+      produto: item.produto
+    }));
 
     // Calcula a quantidade total de produtos
     const quantidadeTotal = produtosComDatas.length;
@@ -192,7 +193,7 @@ const DadosPage: React.FC = () => {
           <p>Média de produtos cadastrados por mês: {mediaMensal.toFixed(2)}</p>
         </div>
 
-        {/* Métricas GPT */} 
+        {/* Métricas GPT */}
         <div className={styles.adicional}></div>
         <h2>Métricas GPT:</h2>
         <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em 25 dias</p>
