@@ -1,8 +1,10 @@
+// /src/components/Produtos.tsx
+import React, { useState, useEffect } from "react";
 import styles from "./Produtos.module.scss";
 import { FiTrash2, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { dataCadastrador1, dataCadastrador2 } from "../Data/data"; // Importação de dados de dois cadastradores
+import { dataCadastrador1, dataCadastrador2 } from "../Data/data"; // Importação de dados dos cadastradores
 
 type Anotacao = {
   produto: string;
@@ -12,13 +14,16 @@ type Anotacao = {
 interface ProdutosProps {
   cadastrador: string; // Recebe qual cadastrador está ativo
 }
-interface ProdutosProps {
-  cadastrador: string; // Recebe qual cadastrador está ativo
-}
 
 const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
-  const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2; // Dados do cadastrador ativo
-  const [anotacoes, setAnotacoes] = useState<Anotacao[]>(data);
+  const [anotacoes, setAnotacoes] = useState<Anotacao[]>([]); // Inicializa com array vazio
+
+  // Atualiza as anotações sempre que o cadastrador mudar
+  useEffect(() => {
+    const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2;
+    setAnotacoes(data); // Atualiza as anotações de acordo com o cadastrador
+  }, [cadastrador]); // Coloca 'cadastrador' como dependência para garantir que atualize
+
   const [novaAnotacao, setNovaAnotacao] = useState<{ produto: string; data: Date }>({
     produto: "",
     data: new Date(),
