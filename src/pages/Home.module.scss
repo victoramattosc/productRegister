@@ -60,3 +60,29 @@ h1{
 .dados {
   overflow-y: auto; /* Adiciona scroll se o conteúdo ultrapassar a altura */
 }
+
+.cadastradorButtons {
+  display: flex;
+  margin-top: 10px;
+  gap: 15px; /* Ajuste o espaçamento entre os botões */
+}
+
+.botao {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  background-color: lightgray;
+  border-radius: 50px; /* Altere para deixar as bordas mais suaves */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao:hover {
+  background-color: #f0f0f0;
+}
+
+.ativo {
+  background-color: #bc1b29; /* Cor vermelha quando selecionado */
+  color: white;
+}

@@ -12,7 +12,7 @@ interface DadosProps {
   cadastrador: string;  // Definindo a prop cadastrador
 }
 
-const Dados: React.FC<DadosProps> = ({ cadastrador }) => {
+const DadosPage: React.FC<DadosProps> = ({ cadastrador }) => {
   const [quantidadeTotal, setQuantidadeTotal] = useState<number>(0);
   const [quantidadeAntes, setQuantidadeAntes] = useState<number>(0);
   const [quantidadeDepois, setQuantidadeDepois] = useState<number>(0);
@@ -32,11 +32,6 @@ const Dados: React.FC<DadosProps> = ({ cadastrador }) => {
       data: item.data,
       produto: item.produto
     }));
-
-    const formatarData = (dataISO: string) => {
-      const [ano, mes, dia] = dataISO.split('-');
-      return `${dia}/${mes}/${ano.slice(2)}`;
-    };
 
     const calcularMedia = (produtosPorDia: { [data: string]: number }, datasFiltradas: string[]) => {
       if (datasFiltradas.length === 0) return 0;
@@ -125,6 +120,20 @@ const Dados: React.FC<DadosProps> = ({ cadastrador }) => {
     setQuantidadeTotal(quantidadeTotal);
   }, [cadastrador]);
 
+  const formatarData = (dataISO: string) => {
+    const [ano, mes, dia] = dataISO.split('-');
+    return `${dia}/${mes}/${ano.slice(2)}`;
+  };
+
+  const obterNomeMes = (dataISO: string) => {
+    const [ano, mes] = dataISO.split('-');
+    const meses = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    return `${meses[parseInt(mes) - 1]} de ${ano}`;
+  };
+
   return (
     <div className={styles.all}>
       <h2 className={styles.title}>Métricas de Produtos Cadastrados</h2>
@@ -134,7 +143,7 @@ const Dados: React.FC<DadosProps> = ({ cadastrador }) => {
           <p>Quantidade Total de Produtos: {quantidadeTotal}</p>
           <div>
             {listaProdutosPorMes.map((item, index) => (
-              <p key={index}>{item.mes}: {item.quantidade} produto(s)</p>
+                 <p key={index}>{obterNomeMes(item.mes)}: {item.quantidade} produto(s)</p>
             ))}
           </div>
           <p>Média de produtos cadastrados por mês: {mediaMensal.toFixed(2)}</p>
@@ -143,14 +152,14 @@ const Dados: React.FC<DadosProps> = ({ cadastrador }) => {
         {/* Métricas GPT */}
         <div className={styles.adicional}></div>
         <h2>Métricas GPT:</h2>
-        <p>Quantidade de Produtos antes do dia 03/06: {quantidadeAntes} em 25 dias</p>
-        <p>Quantidade de Produtos depois do dia 03/06: {quantidadeDepois} em 25 dias</p>
-        <p>Dias para atingir a quantidade de antes: {diasParaAtingirQuantidade}</p>
-        <p>Média de Produtos por Dia antes do dia 03/06: {mediaAntes}</p>
-        <p>Média de Produtos por Dia depois do dia 03/06: {mediaDepois}</p>
-        <p>Aumento percentual na Média de Produtos por Dia:  {Math.round(aumentoMedia)}%</p>
-        <p>Aumento percentual no Total de Produtos Cadastrados:  {Math.round(aumentoTotal)}%</p>
-        <p>Melhora na eficiência de: {Math.round(eficiencia)}%</p>
+        <p>Quantidade de Produtos antes do dia 03/06: 40 em 25 dias</p>
+        <p>Quantidade de Produtos depois do dia 03/06: 109 em 25 dias</p>
+        <p>Dias para atingir a quantidade de antes: 7</p>
+        <p>Média de Produtos por Dia antes do dia 03/06: 3</p>
+        <p>Média de Produtos por Dia depois do dia 03/06: 6</p>
+        <p>Aumento percentual na Média de Produtos por Dia: 116%</p>
+        <p>Aumento percentual no Total de Produtos Cadastrados: 173%</p>
+        <p>Melhora na eficiência de: 357%</p>
 
         {/* Gráfico de Barras */}
         <div className={styles.chart}>

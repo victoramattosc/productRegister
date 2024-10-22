@@ -5,9 +5,18 @@ interface BarChatProps {
   listaProdutosPorMes: { mes: string, quantidade: number }[];
 }
 
+const obterNomeMes = (dataISO: string) => {
+  const [ano, mes] = dataISO.split('-');
+  const meses = [
+    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+  ];
+  return `${meses[parseInt(mes) - 1]} de ${ano}`;
+};
+
 const BarChat: React.FC<BarChatProps> = ({ listaProdutosPorMes }) => {
   const maxQuantidade = Math.max(...listaProdutosPorMes.map(item => item.quantidade));
-  
+
   return (
     <div className={styles.barChatContainer}>
       {listaProdutosPorMes.map((item) => (
@@ -17,7 +26,7 @@ const BarChat: React.FC<BarChatProps> = ({ listaProdutosPorMes }) => {
             style={{ height: `${(item.quantidade / maxQuantidade) * 100}%` }}
             title={`${item.quantidade} produto(s)`}
           ></div>
-          <span className={styles.barLabel}>{item.mes}</span>
+          <span className={styles.barLabel}>{obterNomeMes(item.mes)}</span> {/* Formatação do mês */}
         </div>
       ))}
     </div>

@@ -14,12 +14,22 @@ export function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.title}>
-        <h1>Product Register - {cadastradorAtivo}</h1>
+        <h1>Product Register</h1>
       </div>
 
       <div className={styles.cadastradorButtons}>
-        <button onClick={() => handleTrocaCadastrador('Cadastrador1')}>Cadastrador 1</button>
-        <button onClick={() => handleTrocaCadastrador('Cadastrador2')}>Cadastrador 2</button>
+      <button
+          className={`${styles.botao} ${cadastradorAtivo === 'Cadastrador1' ? styles.ativo : ''}`}
+          onClick={() => handleTrocaCadastrador('Cadastrador1')}
+        >
+          Victor
+        </button>
+        <button
+          className={`${styles.botao} ${cadastradorAtivo === 'Cadastrador2' ? styles.ativo : ''}`}
+          onClick={() => handleTrocaCadastrador('Cadastrador2')}
+        >
+          Carlos
+        </button>
       </div>
 
       <div className={styles.content}>
