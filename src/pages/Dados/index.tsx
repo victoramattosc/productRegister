@@ -8,8 +8,11 @@ interface Produto {
   produto: string;
 }
 
-const DadosPage: React.FC = () => {
-  const [cadastrador, setCadastrador] = useState<string>('Cadastrador1');
+interface DadosProps {
+  cadastrador: string;  // Definindo a prop cadastrador
+}
+
+const Dados: React.FC<DadosProps> = ({ cadastrador }) => {
   const [quantidadeTotal, setQuantidadeTotal] = useState<number>(0);
   const [quantidadeAntes, setQuantidadeAntes] = useState<number>(0);
   const [quantidadeDepois, setQuantidadeDepois] = useState<number>(0);
