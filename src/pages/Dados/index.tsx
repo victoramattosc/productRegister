@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { dataCadastrador1, dataCadastrador2 } from '../Data/data';
+import { dataCadastrador1 } from '../Data/dataVictor';
+import { dataCadastrador2 } from '../Data/dataCarlos';
 import styles from "./Dados.module.scss";
 import BarChat from '../BarChat';
 

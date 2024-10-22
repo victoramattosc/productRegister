@@ -463,5 +463,3 @@ export const dataCadastrador1 = [
     { produto: '66178 - Desempenadeira Aço Zincado Lisa 12x29cm Galo', data: '2024-10-21' },       
     { produto: '66188 - Desempenadeira Aço Zincado Lisa 12x40cm Galo', data: '2024-10-21' },       
 ];
-
-export const dataCadastrador2 = [];
