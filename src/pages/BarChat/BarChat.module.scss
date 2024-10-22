@@ -1,9 +1,9 @@
 .barChatContainer {
   display: flex;
   justify-content: space-around;
-  align-items: flex-end; 
-  width: 100%;
+  align-items: flex-end;
   height: 300px;
+  width: 100%;
   margin-top: 20px;
   border: 1px solid #ccc;
   padding: 10px;
@@ -14,15 +14,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; 
-  height: 100%; 
+  height: 100%;
+  width: 10%; /* Ajusta a largura das barras */
 }
 
 .bar {
-  width: 30px;
-  background-color: #eb1c3c;
+  background-color: #bc1b29;
+  width: 50%;
+  transition: height 0.3s ease;
 }
 
 .barLabel {
   margin-top: 5px;
+  text-align: center;
   font-size: 12px;
 }

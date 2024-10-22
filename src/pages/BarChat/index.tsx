@@ -15,7 +15,8 @@ const obterNomeMes = (dataISO: string) => {
 };
 
 const BarChat: React.FC<BarChatProps> = ({ listaProdutosPorMes }) => {
-  const maxQuantidade = Math.max(...listaProdutosPorMes.map(item => item.quantidade));
+  // Garantimos que a maior quantidade seja maior que zero para evitar divisões por zero
+  const maxQuantidade = Math.max(1, ...listaProdutosPorMes.map(item => item.quantidade));
 
   return (
     <div className={styles.barChatContainer}>
@@ -24,9 +25,9 @@ const BarChat: React.FC<BarChatProps> = ({ listaProdutosPorMes }) => {
           <div 
             className={styles.bar} 
             style={{ height: `${(item.quantidade / maxQuantidade) * 100}%` }}
-            title={`${item.quantidade} produto(s)`}
+            title={`${item.quantidade} produto(s)`} 
           ></div>
-          <span className={styles.barLabel}>{obterNomeMes(item.mes)}</span> {/* Formatação do mês */}
+          <span className={styles.barLabel}>{obterNomeMes(item.mes)}</span>
         </div>
       ))}
     </div>
