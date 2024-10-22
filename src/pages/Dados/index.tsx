@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { dataCadastrador1, dataCadastrador2 } from '../Data/data'; 
+import { dataCadastrador1, dataCadastrador2 } from '../Data/data';
 import styles from "./Dados.module.scss";
-import BarChat from '../BarChat'; // Import the BarChat component
+import BarChat from '../BarChat';
 
 interface Produto {
   data: string;
@@ -9,12 +9,10 @@ interface Produto {
 }
 
 const DadosPage: React.FC = () => {
-  const [cadastrador, setCadastrador] = useState<string>('Cadastrador1'); // Adicionando o cadastrador ativo
+  const [cadastrador, setCadastrador] = useState<string>('Cadastrador1');
   const [quantidadeTotal, setQuantidadeTotal] = useState<number>(0);
   const [quantidadeAntes, setQuantidadeAntes] = useState<number>(0);
   const [quantidadeDepois, setQuantidadeDepois] = useState<number>(0);
-  const [diasAntes, setDiasAntes] = useState<number>(0);
-  const [diasDepois, setDiasDepois] = useState<number>(0);
   const [diasParaAtingirQuantidade, setDiasParaAtingirQuantidade] = useState<number>(0);
   const [mediaAntes, setMediaAntes] = useState<number>(0);
   const [mediaDepois, setMediaDepois] = useState<number>(0);
@@ -25,32 +23,20 @@ const DadosPage: React.FC = () => {
   const [mediaMensal, setMediaMensal] = useState<number>(0);
 
   useEffect(() => {
-    const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2; // Use the active data
+    const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2;
 
     const produtosComDatas: Produto[] = data.map((item: { data: string, produto: string }) => ({
       data: item.data,
       produto: item.produto
     }));
 
-  useEffect(() => {
     const formatarData = (dataISO: string) => {
       const [ano, mes, dia] = dataISO.split('-');
       return `${dia}/${mes}/${ano.slice(2)}`;
     };
 
-    const calcularDiferencaDias = (dataInicio: string, dataFim: string) => {
-      const inicio = new Date(dataInicio);
-      const fim = new Date(dataFim);
-      const diferencaMilissegundos = fim.getTime() - inicio.getTime();
-      const diferencaDias = diferencaMilissegundos / (1000 * 60 * 60 * 24);
-      return Math.floor(diferencaDias);
-    };
-
     const calcularMedia = (produtosPorDia: { [data: string]: number }, datasFiltradas: string[]) => {
-      if (datasFiltradas.length === 0) {
-        return 0;
-      }
-
+      if (datasFiltradas.length === 0) return 0;
       const totalProdutos = datasFiltradas.reduce((total, data) => total + produtosPorDia[data], 0);
       return totalProdutos / datasFiltradas.length;
     };
@@ -59,45 +45,6 @@ const DadosPage: React.FC = () => {
       if (valorAntigo === 0) return 0;
       const diferenca = valorNovo - valorAntigo;
       return (diferenca / valorAntigo) * 100;
-    };
-
-    const calcularProdutosPorMes = (produtosComDatas: Produto[]) => {
-      const produtosPorMes: { [mes: string]: number } = {};
-
-      produtosComDatas.forEach(item => {
-        const [ano, mes] = item.data.split('-');
-        const chaveMes = `${ano}-${mes}`;
-
-        if (produtosPorMes[chaveMes]) {
-          produtosPorMes[chaveMes]++;
-        } else {
-          produtosPorMes[chaveMes] = 1;
-        }
-      });
-
-      return produtosPorMes;
-    };
-
-    const calcularMediaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
-      const totalMeses = Object.keys(produtosPorMes).length;
-      const totalProdutos = Object.values(produtosPorMes).reduce((total, quantidade) => total + quantidade, 0);
-
-      return totalProdutos / totalMeses;
-    };
-
-    const obterNomeMes = (dataISO: string) => {
-      const [ano, mes] = dataISO.split('-');
-      const meses = [
-        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-      ];
-      return `${meses[parseInt(mes) - 1]} de ${ano}`;
-    };
-
-    const calcularListaProdutosPorMes = (produtosPorMes: { [mes: string]: number }) => {
-      return Object.entries(produtosPorMes).map(
-        ([mes, quantidade]) => ({ mes: obterNomeMes(mes), quantidade })
-      );
     };
 
     const adicionarDias = (dataISO: string, dias: number) => {
@@ -109,20 +56,7 @@ const DadosPage: React.FC = () => {
       return `${ano}-${mes}-${dia}`;
     };
 
-    // Calcula a quantidade total de produtos
-    const quantidadeTotal = produtosComDatas.length;
-    setQuantidadeTotal(quantidadeTotal);
-
-    // Define a data de referência
     const dataReferencia = '2024-06-03';
-
-    // Calcula a quantidade de produtos antes do GPT (período fixo de 25 dias)
-    const dataInicioAntes = adicionarDias(dataReferencia, -25);
-    const datasAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data < dataReferencia).map(item => item.data);
-    const quantidadeAntes = datasAntes.length;
-    setQuantidadeAntes(quantidadeAntes);
-
-    // Calcula a média de produtos antes do GPT
     const produtosPorDia: { [data: string]: number } = {};
     produtosComDatas.forEach(item => {
       const dataItem = item.data;
@@ -132,59 +66,65 @@ const DadosPage: React.FC = () => {
         produtosPorDia[dataItem] = 1;
       }
     });
+
+    const dataInicioAntes = adicionarDias(dataReferencia, -25);
+    const datasAntes = produtosComDatas.filter(item => item.data >= dataInicioAntes && item.data < dataReferencia).map(item => item.data);
+    const quantidadeAntes = datasAntes.length;
+    setQuantidadeAntes(quantidadeAntes);
     const mediaAntes = calcularMedia(produtosPorDia, datasAntes);
     setMediaAntes(Math.round(mediaAntes));
 
-    // Calcula a quantidade de produtos depois do GPT (usando apenas os primeiros 25 dias para comparação justa)
     const dataFimComparacao = adicionarDias(dataReferencia, 25);
     const datasDepois = produtosComDatas.filter(item => item.data >= dataReferencia && item.data <= dataFimComparacao).map(item => item.data);
     const quantidadeDepois = datasDepois.length;
     setQuantidadeDepois(quantidadeDepois);
-
-    // Calcula a média de produtos depois do GPT
     const mediaDepois = calcularMedia(produtosPorDia, datasDepois);
     setMediaDepois(Math.round(mediaDepois));
 
-    // Calcula o aumento percentual na média de produtos por dia
     const aumentoMedia = calcularPorcentagemAumento(mediaAntes, mediaDepois);
     setAumentoMedia(aumentoMedia);
-
-    // Calcula o aumento percentual no total de produtos cadastrados
     const aumentoTotal = calcularPorcentagemAumento(quantidadeAntes, quantidadeDepois);
     setAumentoTotal(aumentoTotal);
 
-    // Calcula quantos dias depois do ChatGPT demorou para bater a quantidade de antes
     let produtosAposChatGPT = 0;
     let diasParaAtingirQuantidade = 0;
     for (const data of datasDepois) {
       produtosAposChatGPT += produtosPorDia[data];
       diasParaAtingirQuantidade++;
-      if (produtosAposChatGPT >= quantidadeAntes) {
-        break;
-      }
+      if (produtosAposChatGPT >= quantidadeAntes) break;
     }
     setDiasParaAtingirQuantidade(diasParaAtingirQuantidade);
 
-    // Calcula a eficiência (percentual baseado nos primeiros 25 dias antes e depois do GPT)
     const eficiencia = (25 / diasParaAtingirQuantidade) * 100;
     setEficiencia(eficiencia);
 
-    // Calcula a quantidade de produtos por mês
-    const produtosPorMes = calcularProdutosPorMes(produtosComDatas);
-    const listaProdutosPorMesArray = calcularListaProdutosPorMes(produtosPorMes);
+    const produtosPorMes: { [mes: string]: number } = {};
+    produtosComDatas.forEach(item => {
+      const [ano, mes] = item.data.split('-');
+      const chaveMes = `${ano}-${mes}`;
+      if (produtosPorMes[chaveMes]) {
+        produtosPorMes[chaveMes]++;
+      } else {
+        produtosPorMes[chaveMes] = 1;
+      }
+    });
+
+    const listaProdutosPorMesArray = Object.entries(produtosPorMes).map(([mes, quantidade]) => ({
+      mes,
+      quantidade,
+    }));
     setListaProdutosPorMes(listaProdutosPorMesArray);
 
-    // Calcula e exibe a média de produtos cadastrados por mês
-    const mediaProdutosPorMes = calcularMediaProdutosPorMes(produtosPorMes);
-    setMediaMensal(mediaProdutosPorMes);
+    const mediaMensal = Object.values(produtosPorMes).reduce((total, quantidade) => total + quantidade, 0) / Object.keys(produtosPorMes).length;
+    setMediaMensal(mediaMensal);
 
-  }, []);
+    const quantidadeTotal = produtosComDatas.length;
+    setQuantidadeTotal(quantidadeTotal);
+  }, [cadastrador]);
 
   return (
     <div className={styles.all}>
-      <h2 className={styles.title}>
-        Métricas de Produtos Cadastrados
-      </h2>
+      <h2 className={styles.title}>Métricas de Produtos Cadastrados</h2>
       <div className={styles.container}>
         <div className={styles.geral}>
           <h2>Geral:</h2>
