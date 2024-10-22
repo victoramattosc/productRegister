@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Produtos.module.scss";
 import { FiTrash2, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { data } from "../Data/data";
+import { dataCadastrador1, dataCadastrador2 } from "../Data/data";
 
 type Anotacao = {
   produto: string;
   data: string;
 };
 
-const Produtos = () => {
-  const [anotacoes, setAnotacoes] = useState<Anotacao[]>(data);
-  const [novaAnotacao, setNovaAnotacao] = useState<{ produto: string; data: Date }>({
+interface ProdutosProps {
+  cadastrador: string;
+}
+
+const Produtos: React.FC<ProdutosProps> = ({ cadastrador }) => {
+  const [anotacoes, setAnotacoes] = useState<Anotacao[]>([]);
+
+  const [mostrarTodos, setMostrarTodos] = useState(false);
+  const [novaAnotacao, setNovaAnotacao] = useState<{
+    produto: string;
+    data: Date;
+  }>({
     produto: "",
     data: new Date(),
   });
-  const [mostrarTodos, setMostrarTodos] = useState(false);
+
+  useEffect(() => {
+    const data =
+      cadastrador === "Cadastrador1" ? dataCadastrador1 : dataCadastrador2;
+    setAnotacoes(data);
+  }, [cadastrador]);
 
   const adicionarAnotacao = () => {
     if (novaAnotacao.produto.trim() !== "") {
@@ -42,7 +56,7 @@ const Produtos = () => {
   };
 
   const formatarData = (dataISO: string) => {
-    const [ano, mes, dia] = dataISO.split('-');
+    const [ano, mes, dia] = dataISO.split("-");
     return `${dia}/${mes}/${ano.slice(2)}`;
   };
 

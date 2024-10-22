@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { data } from '../Data/data';
+import { dataCadastrador1, dataCadastrador2 } from '../Data/data'; 
 import styles from "./Dados.module.scss";
 import BarChat from '../BarChat'; // Import the BarChat component
 
@@ -9,6 +9,7 @@ interface Produto {
 }
 
 const DadosPage: React.FC = () => {
+  const [cadastrador, setCadastrador] = useState<string>('Cadastrador1'); // Adicionando o cadastrador ativo
   const [quantidadeTotal, setQuantidadeTotal] = useState<number>(0);
   const [quantidadeAntes, setQuantidadeAntes] = useState<number>(0);
   const [quantidadeDepois, setQuantidadeDepois] = useState<number>(0);
@@ -22,6 +23,14 @@ const DadosPage: React.FC = () => {
   const [eficiencia, setEficiencia] = useState<number>(0);
   const [listaProdutosPorMes, setListaProdutosPorMes] = useState<{ mes: string, quantidade: number }[]>([]);
   const [mediaMensal, setMediaMensal] = useState<number>(0);
+
+  useEffect(() => {
+    const data = cadastrador === 'Cadastrador1' ? dataCadastrador1 : dataCadastrador2; // Use the active data
+
+    const produtosComDatas: Produto[] = data.map((item: { data: string, produto: string }) => ({
+      data: item.data,
+      produto: item.produto
+    }));
 
   useEffect(() => {
     const formatarData = (dataISO: string) => {
@@ -99,11 +108,6 @@ const DadosPage: React.FC = () => {
       const dia = String(date.getDate()).padStart(2, '0');
       return `${ano}-${mes}-${dia}`;
     };
-
-    const produtosComDatas: Produto[] = data.map((item: { data: string, produto: string }) => ({
-      data: item.data,
-      produto: item.produto
-    }));
 
     // Calcula a quantidade total de produtos
     const quantidadeTotal = produtosComDatas.length;
