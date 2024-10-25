@@ -462,4 +462,9 @@ export const dataCadastrador1 = [
     { produto: '66201 - Desempenadeira Poliestireno para Grafiato 18x30cm Galo', data: '2024-10-21' },       
     { produto: '66178 - Desempenadeira Aço Zincado Lisa 12x29cm Galo', data: '2024-10-21' },       
     { produto: '66188 - Desempenadeira Aço Zincado Lisa 12x40cm Galo', data: '2024-10-21' },       
+    { produto: '66159 - Desempenadeira Aço Inox Lisa 12x29cm Galo', data: '2024-10-25' },       
+    { produto: '66165 - Desempenadeira Aço Inox Lisa 12x40cm Galo', data: '2024-10-25' },       
+    { produto: '66155 - Desempenadeira Aço Temperado Lisa 12x29cm Galo', data: '2024-10-25' },       
+    { produto: '66160 - Desempenadeira Aço Temperado Lisa 12x40cm Galo', data: '2024-10-25' },       
+    { produto: '66177 - Desempenadeira Aço Zincado Lisa Cabo Aberto 12x29cm Galo', data: '2024-10-25' },       
 ];
