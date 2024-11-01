@@ -5,4 +5,13 @@ export const dataCadastrador2 = [
     { produto: '30919 - Alicate Anéis Interno Reto 7" Gedore', data: '2024-10-24' },
     { produto: '30894 - Alicate Anéis Externo Reto 7" Gedore', data: '2024-10-25' },
     { produto: '30908 - Alicate Anéis Interno Curvo 7" Gedore', data: '2024-10-25' },
+    { produto: '30884 - Alicate Anéis Externo Curvo 6.1/2" Gedore', data: '2024-10-25' },
+    { produto: '64432 - Alicate Aneis Externo Reto 07" INGCO', data: '2024-10-25' },
+    { produto: '64434 - Alicate de Anéis Internos Curvo 7" INGCO', data: '2024-10-25' },
+    { produto: '66289 - Adesivo para Junta de Motor 73g Tek Bond', data: '2024-10-25' },
+    { produto: '66244 - Massa para Pequenos Reparos 180g Maza', data: '2024-10-25' },
+    { produto: '66228 - Adesivo PU40 Preto 400g SelaPro', data: '2024-10-25' },
+    { produto: '66226 - Adesivo PU40 Cinza 400g SelaPro', data: '2024-10-25' },
+    { produto: '66227 - Adesivo PU40 Branco 400g SelaPro', data: '2024-10-25' },
+    { produto: '66354 - Tesoura para Flores 18,5cm Trapp', data: '2024-10-25' },
 ];
