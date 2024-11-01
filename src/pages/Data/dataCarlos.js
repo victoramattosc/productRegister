@@ -14,4 +14,9 @@ export const dataCadastrador2 = [
     { produto: '66226 - Adesivo PU40 Cinza 400g SelaPro', data: '2024-10-25' },
     { produto: '66227 - Adesivo PU40 Branco 400g SelaPro', data: '2024-10-25' },
     { produto: '66354 - Tesoura para Flores 18,5cm Trapp', data: '2024-10-25' },
+    { produto: '59155 - Limpador Brilha Inox Scotch Brite 200ml 3M', data: '2024-10-31' },
+    { produto: '13692 - Disco de Desbaste 4.1/2" Basic Tyrolit', data: '2024-11-01' },
+    { produto: 'KIT-13692-10UN - Kit Disco de Desbaste 4.1/2! Basic 10 Unid. Tyrolit', data: '2024-11-01' },
+    { produto: '65961 - Cadeado TSA Executive 4 Segredos Preto Pado', data: '2024-11-01' },
+    { produto: '65703 - Jogo Maleta de Bits Brocas e Ferramentas 71 Peças Makita', data: '2024-11-01' },
 ];

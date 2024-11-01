@@ -477,9 +477,7 @@ export const dataCadastrador1 = [
     { produto: '40861 - Desempenadeira Aço Inox Lisa 12x29cm Cabo Aberto Galo', data: '2024-10-30' },
     { produto: '66164 - Desempenadeira Aço Inox Arredondada 08x10x24cm Aberta Galo', data: '2024-10-30' },
     { produto: '66167 - Desempenadeira Aço Inox Trapézio 24x13x12cm Aberta Galo', data: '2024-10-30' },
-    { produto: '6574 - Escada Extensiva de Alumínio 2x8 4,21m Mor', data: '2024-10-31' },
     { produto: '25834 - Politriz Angular 7" 1400W 220V Ingco', data: '2024-11-01' },
-    { produto: '62220 - Motor à Diesel 10,0CV Partida Elétrica BD 10.0 E XS Branco', data: '2024-11-01' },
 
     //Ordenação cadastro produto - Planilha
   { produto: "6638 - Planilha Ordenação Cadastro", data: "2024-09-01" },
@@ -514,7 +512,8 @@ export const dataCadastrador1 = [
   { produto: "27839 - Planilha Ordenação Cadastro", data: "2024-09-01" },
   { produto: "26861 - Planilha Ordenação Cadastro", data: "2024-09-01" },
   { produto: "26864 - Planilha Ordenação Cadastro", data: "2024-09-01" },
-  { produto: "6574 - Planilha Ordenação Cadastro", data: "2024-09-01" },
-  { produto: "62220 - Planilha Ordenação Cadastro", data: "2024-09-01" },
+  { produto: "6574 - Escada Extensiva de Alumínio 2x8 4,21m Mor", data: "2024-10-31" },
+  { produto: "62220 - Motor à Diesel 10,0CV Partida Elétrica BD 10.0 E XS Branco", data: "2024-11-01" },
+  { produto: "24554 - Furadeira de Impacto 1/2'' 760W 220V HP1640 Makita", data: "2024-11-01" },
     
 ];
