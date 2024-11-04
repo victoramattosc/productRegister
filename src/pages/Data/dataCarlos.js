@@ -19,4 +19,7 @@ export const dataCadastrador2 = [
     { produto: 'KIT-13692-10UN - Kit Disco de Desbaste 4.1/2! Basic 10 Unid. Tyrolit', data: '2024-11-01' },
     { produto: '65961 - Cadeado TSA Executive 4 Segredos Preto Pado', data: '2024-11-01' },
     { produto: '65703 - Jogo Maleta de Bits Brocas e Ferramentas 71 Peças Makita', data: '2024-11-01' },
+    { produto: '66315 - Jogo de Soquetes com Chave Catraca 1/2" 20 Peças Ingco', data: '2024-11-01' },
+    { produto: '42773 - Disco Motosserra 4.1/2" para Esmerilhadeira Rocast', data: '2024-11-04' },
+    { produto: '59030 - Veda Rosca Líquido 204 100g Tek Bond', data: '2024-11-04' },
 ];
