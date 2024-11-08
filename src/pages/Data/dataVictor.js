@@ -517,6 +517,11 @@ export const dataCadastrador1 = [
   { produto: "24554 - Furadeira de Impacto 1/2'' 760W 220V HP1640 Makita", data: "2024-11-01" },
   { produto: "25617 - Esmerilhadeira Angular 7'' 2400W 127V Ingco", data: "2024-11-04" },
   { produto: "6583 - Escada Extensiva de Alumínio 2x12 6,17m Mor", data: "2024-11-04" },
-  { produto: "6579 - Escada Extensiva de Alumínio 5x10 5m Mor", data: "2024-11-04" },
+  { produto: "6579 - Escada Extensiva de Alumínio 2x10 5m Mor", data: "2024-11-05" },
+  { produto: "24470 - Esmerilhadeira Angular 7'' 2200W 127V Makita", data: "2024-11-05" },
+  { produto: "26870 - Talha de Corrente Manual MTC 2,0T x 3,0m Menegotti", data: "2024-11-06" },
+  { produto: "24473 - Talha de Corrente Manual MTC 0,5T x 5m Menegotti", data: "2024-11-07" },
+  { produto: "62645 - Máquina de Solda Inversora HandyArc 132i Bivolt ESAB", data: "2024-11-07" },
+  { produto: "25656 - Esmerilhadeira Angular 7'' 2200W 127V Dewalt", data: "2024-11-07" },
     
 ];
